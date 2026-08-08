@@ -1,12 +1,13 @@
-import React, { useRef, useEffect } from 'react'
-import { animate, motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { SearchCheck, ShieldCheck, Scale, Zap } from 'lucide-react'
+import React, { useRef, useEffect, useState } from 'react'
+import { animate, motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion'
+import { SearchCheck, ShieldCheck, Scale, Zap, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react'
 import '../styles/home.css'
 import logo20Cube from '../assets/logo/20cube.png'
 import logoBontaz from '../assets/logo/bontaz.png'
 import logoEncipher from '../assets/logo/encipher.png'
 import logoImit from '../assets/logo/imit.png'
 import logoMindbridges from '../assets/logo/mindbridges.png'
+
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -60,45 +61,7 @@ export function Home() {
   // Horizontal parallax shift driven by scroll direction (scrolling down pushes left, scrolling up pushes right)
   const clientsTrackX = useTransform(smoothClientsScroll, [0, 1], [140, -140])
 
-  /* ── Aurora cursor follower ── */
-  const auroraRef = useRef(null)
-  const mouse = useRef({ x: 0, y: 0 })
-  const pos   = useRef({ x: 0, y: 0 })
-  const rafId = useRef(null)
 
-  useEffect(() => {
-    const el = auroraRef.current
-    if (!el) return
-
-    const onMove = (e) => {
-      // Check if cursor is over the clients section — hide there
-      const clientsEl = document.querySelector('.clients-section')
-      if (clientsEl) {
-        const r = clientsEl.getBoundingClientRect()
-        const inside =
-          e.clientX >= r.left && e.clientX <= r.right &&
-          e.clientY >= r.top  && e.clientY <= r.bottom
-        el.style.opacity = inside ? '0' : '1'
-      }
-      mouse.current = { x: e.clientX, y: e.clientY }
-    }
-
-    const animate = () => {
-      // Smooth lerp towards cursor position
-      pos.current.x += (mouse.current.x - pos.current.x) * 0.25
-      pos.current.y += (mouse.current.y - pos.current.y) * 0.25
-      el.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`
-      rafId.current = requestAnimationFrame(animate)
-    }
-
-    window.addEventListener('mousemove', onMove)
-    rafId.current = requestAnimationFrame(animate)
-
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-      cancelAnimationFrame(rafId.current)
-    }
-  }, [])
 
   const handleMagneticMove = (e) => {
     const btn = e.currentTarget
@@ -129,7 +92,7 @@ export function Home() {
   }
 
   const pillars = [
-    { 
+    {
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="11" cy="11" r="7" stroke="url(#va-grad-1)" strokeWidth="2.2" strokeLinecap="round" />
@@ -143,12 +106,12 @@ export function Home() {
             </linearGradient>
           </defs>
         </svg>
-      ), 
-      badgeClass: 'p-badge-va', 
-      name: 'Assess', 
-      desc: 'VAPT, readiness and risk reviews.' 
+      ),
+      badgeClass: 'p-badge-va',
+      name: 'Assess',
+      desc: 'VAPT, readiness and risk reviews.'
     },
-    { 
+    {
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2L4 6V12C4 17.5 7.5 21.8 12 23C16.5 21.8 20 17.5 20 12V6L12 2Z" fill="url(#tp-grad-bg)" stroke="#ffffff" strokeWidth="1.8" strokeLinejoin="round" />
@@ -160,12 +123,12 @@ export function Home() {
             </linearGradient>
           </defs>
         </svg>
-      ), 
-      badgeClass: 'p-badge-tp', 
-      name: 'Protect', 
-      desc: 'Control implementation & remediation.' 
+      ),
+      badgeClass: 'p-badge-tp',
+      name: 'Protect',
+      desc: 'Control implementation & remediation.'
     },
-    { 
+    {
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 3V21M12 3L7 7M12 3L17 7" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
@@ -173,12 +136,12 @@ export function Home() {
           <path d="M19 12L16 17H24L21 12Z" stroke="#ffffff" strokeWidth="1.8" strokeLinejoin="round" fill="rgba(255,255,255,0.2)" />
           <path d="M4 21H20" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
         </svg>
-      ), 
-      badgeClass: 'p-badge-so', 
-      name: 'Govern', 
-      desc: 'Privacy, compliance & third-party risk.' 
+      ),
+      badgeClass: 'p-badge-so',
+      name: 'Govern',
+      desc: 'Privacy, compliance & third-party risk.'
     },
-    { 
+    {
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="url(#dp-grad-bg)" stroke="#ffffff" strokeWidth="1.8" strokeLinejoin="round" />
@@ -189,10 +152,10 @@ export function Home() {
             </linearGradient>
           </defs>
         </svg>
-      ), 
-      badgeClass: 'p-badge-dp', 
-      name: 'Respond', 
-      desc: 'SOC operations & incident support.' 
+      ),
+      badgeClass: 'p-badge-dp',
+      name: 'Respond',
+      desc: 'SOC operations & incident support.'
     }
   ]
 
@@ -209,8 +172,8 @@ export function Home() {
       num: '01',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="m9 12 2 2 4-4"/>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="m9 12 2 2 4-4" />
         </svg>
       ),
       badgeClass: 'pro-badge-teal',
@@ -223,9 +186,9 @@ export function Home() {
       num: '02',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="9"/>
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
         </svg>
       ),
       badgeClass: 'pro-badge-blue',
@@ -238,10 +201,10 @@ export function Home() {
       num: '03',
       icon: (
         <svg width="20" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
       ),
       badgeClass: 'pro-badge-green',
@@ -254,9 +217,9 @@ export function Home() {
       num: '04',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2"/>
-          <path d="M6 21h12M12 17v4"/>
-          <path d="M6 8l3 3 2-2 4 4"/>
+          <rect x="2" y="3" width="20" height="14" rx="2" />
+          <path d="M6 21h12M12 17v4" />
+          <path d="M6 8l3 3 2-2 4 4" />
         </svg>
       ),
       badgeClass: 'pro-badge-indigo',
@@ -269,9 +232,9 @@ export function Home() {
       num: '05',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          <circle cx="12" cy="16" r="1"/>
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          <circle cx="12" cy="16" r="1" />
         </svg>
       ),
       badgeClass: 'pro-badge-amber',
@@ -284,7 +247,7 @@ export function Home() {
       num: '06',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
         </svg>
       ),
       badgeClass: 'pro-badge-purple',
@@ -302,9 +265,9 @@ export function Home() {
       desc: 'Understand the current environment, validate exposure and identify the gaps that matter most.',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8"/>
-          <path d="m21 21-4.3-4.3"/>
-          <path d="M11 8v6M8 11h6"/>
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+          <path d="M11 8v6M8 11h6" />
         </svg>
       ),
       badgeClass: 'step-badge-teal'
@@ -315,7 +278,7 @@ export function Home() {
       desc: 'Translate requirements into practical controls, documentation, remediation and operating processes.',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
         </svg>
       ),
       badgeClass: 'step-badge-blue'
@@ -326,7 +289,7 @@ export function Home() {
       desc: 'Support leadership, customers, boards and auditors with clear security and compliance direction.',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m12 3-1.9 5.8a2 2 0 0 1-1.28 1.28L3 12l5.8 1.9a2 2 0 0 1 1.28 1.28L12 21l1.9-5.8a2 2 0 0 1 1.28-1.28L21 12l-5.8-1.9a2 2 0 0 1-1.28-1.28Z"/>
+          <path d="m12 3-1.9 5.8a2 2 0 0 1-1.28 1.28L3 12l5.8 1.9a2 2 0 0 1 1.28 1.28L12 21l1.9-5.8a2 2 0 0 1 1.28-1.28L21 12l-5.8-1.9a2 2 0 0 1-1.28-1.28Z" />
         </svg>
       ),
       badgeClass: 'step-badge-green'
@@ -337,7 +300,7 @@ export function Home() {
       desc: 'Provide ongoing support for TPRM, privacy, compliance, SOC and security governance activities.',
       icon: (
         <svg width="24" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
       ),
       badgeClass: 'step-badge-purple'
@@ -351,9 +314,9 @@ export function Home() {
       desc: 'Confirm the business objective, scope, risk drivers and target timeline.',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <circle cx="12" cy="12" r="6"/>
-          <circle cx="12" cy="12" r="2"/>
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
         </svg>
       ),
       badgeClass: 'step-badge-teal'
@@ -364,8 +327,8 @@ export function Home() {
       desc: 'Validate gaps, exposure, control maturity and implementation priorities.',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8"/>
-          <path d="m21 21-4.3-4.3"/>
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
         </svg>
       ),
       badgeClass: 'step-badge-blue'
@@ -376,7 +339,7 @@ export function Home() {
       desc: 'Implement controls, remediate findings and establish operating discipline.',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
         </svg>
       ),
       badgeClass: 'step-badge-green'
@@ -387,7 +350,7 @@ export function Home() {
       desc: 'Maintain assurance through retained advisory and operational support.',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
       ),
       badgeClass: 'step-badge-purple'
@@ -396,21 +359,7 @@ export function Home() {
 
   return (
     <div className="home-page-layout">
-      {/* Professional Cyber Security Cursor Follower */}
-      <div ref={auroraRef} className="aurora-cursor" aria-hidden="true">
-        <div className="security-mesh-cluster">
-          <div className="mesh-node node-blue"></div>
-          <div className="mesh-node node-gold"></div>
-          <div className="mesh-node node-teal"></div>
-        </div>
-        <svg className="security-shield-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Cyber Security Shield Shape & Reticle */}
-          <path d="M50 8L15 24V48C15 70 30 88 50 94C70 88 85 70 85 48V24L50 8Z" stroke="rgba(13, 148, 136, 0.55)" strokeWidth="2.5" fill="rgba(255, 255, 255, 0.15)" strokeLinejoin="round"/>
-          <path d="M50 16L22 29V48C22 65 34 80 50 85C66 80 78 65 78 48V29L50 16Z" stroke="rgba(6, 182, 212, 0.35)" strokeWidth="1.5" strokeDasharray="4 3"/>
-          <circle cx="50" cy="46" r="10" stroke="rgba(13, 148, 136, 0.7)" strokeWidth="2" fill="none"/>
-          <path d="M50 32V38M50 54V60M36 46H42M58 46H64" stroke="rgba(13, 148, 136, 0.8)" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
-      </div>
+
 
       {/* Hero Section */}
       <main className="home-container">
@@ -418,7 +367,7 @@ export function Home() {
         <div className="cyber-threat-canvas" aria-hidden="true">
           {/* Light Theme Cyber Operations Command Center Background */}
           <div className="cyber-soc-bg-image"></div>
-          
+
           {/* Animated 3D Cyber Matrix & Radar Grid */}
           <div className="cyber-grid-plane"></div>
           <div className="threat-radar-sweep"></div>
@@ -452,7 +401,7 @@ export function Home() {
 
         <div className="hero-wrapper">
           {/* Left Section: Core Copy & CTAs */}
-          <motion.div 
+          <motion.div
             className="hero-content"
             initial="hidden"
             animate="visible"
@@ -481,9 +430,9 @@ export function Home() {
             {/* 4 Pillar Horizontal Feature Cards */}
             <motion.div className="pillar-horizontal-row" variants={staggerContainer}>
               {pillars.map((pillar, idx) => (
-                <motion.div 
-                  key={idx} 
-                  className="pillar-horizontal-card" 
+                <motion.div
+                  key={idx}
+                  className="pillar-horizontal-card"
                   variants={fadeUp}
                   whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 >
@@ -503,7 +452,7 @@ export function Home() {
 
       {/* Trusted Clients Section with 3D Scroll Reveal */}
       <section className="clients-section" ref={clientsRef}>
-        <motion.div 
+        <motion.div
           className="clients-container"
           style={{
             rotateX: clientsRotateX,
@@ -529,8 +478,8 @@ export function Home() {
           <motion.div className="carousel-track-wrapper" variants={fadeIn}>
             <motion.div className="carousel-track" style={{ x: clientsTrackX }}>
               {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="client-logo-card"
                   whileHover={{ scale: 1.08, y: -5 }}
                   transition={{ type: "spring", stiffness: 350, damping: 20 }}
@@ -547,7 +496,7 @@ export function Home() {
       <section className="pro-services-section">
         <div className="pro-services-container">
           {/* Centered Professional Services Header */}
-          <motion.div 
+          <motion.div
             className="pro-services-header-centered"
             initial="hidden"
             whileInView="visible"
@@ -571,7 +520,7 @@ export function Home() {
           </motion.div>
 
           {/* 6 Professional Service Tiles */}
-          <motion.div 
+          <motion.div
             className="pro-services-tiles-grid"
             initial="hidden"
             whileInView="visible"
@@ -579,8 +528,8 @@ export function Home() {
             variants={staggerContainer}
           >
             {proServicesList.map((item, idx) => (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 className="pro-service-tile"
                 variants={idx % 2 === 0 ? fadeLeft : fadeRight}
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
@@ -601,7 +550,7 @@ export function Home() {
           </motion.div>
 
           {/* Section Below Tiles: How We Support */}
-          <motion.div 
+          <motion.div
             className="how-we-support-centered"
             initial="hidden"
             whileInView="visible"
@@ -625,7 +574,7 @@ export function Home() {
           </motion.div>
 
           {/* 4-Step Support Progression */}
-          <motion.div 
+          <motion.div
             className="how-support-gold-wrapper"
             initial="hidden"
             whileInView="visible"
@@ -634,8 +583,8 @@ export function Home() {
           >
             <div className="how-support-steps-grid">
               {howSupportSteps.map((step, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   className="how-support-step-item"
                   variants={fadeUp}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -653,7 +602,7 @@ export function Home() {
           </motion.div>
 
           {/* Engagement Journey Header */}
-          <motion.div 
+          <motion.div
             className="engagement-journey-centered"
             initial="hidden"
             whileInView="visible"
@@ -678,7 +627,7 @@ export function Home() {
 
           {/* Engagement Journey 4-Step Grid */}
           <div className="engagement-steps-gold-wrapper">
-            <motion.div 
+            <motion.div
               className="engagement-steps-grid"
               initial="hidden"
               whileInView="visible"
@@ -693,15 +642,15 @@ export function Home() {
               }}
             >
               {engagementSteps.map((step, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   className="engagement-step-card"
                   variants={{
                     hidden: { opacity: 0, x: -70 },
-                    visible: { 
-                      opacity: 1, 
-                      x: 0, 
-                      transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } 
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] }
                     }
                   }}
                   whileHover={{ y: -6, transition: { duration: 0.2 } }}
@@ -720,7 +669,7 @@ export function Home() {
 
       {/* CTA Section - Centered, Full Width */}
       <section className="cta-centered-section">
-        <motion.div 
+        <motion.div
           className="cta-centered-container"
           initial="hidden"
           whileInView="visible"
@@ -748,8 +697,8 @@ export function Home() {
 
           {/* Two Buttons */}
           <motion.div className="cta-centered-buttons" variants={fadeUp}>
-            <motion.a 
-              href="#quote" 
+            <motion.a
+              href="#quote"
               className="cta-btn-primary"
             >
               <span className="btn-text-roll">
@@ -757,8 +706,8 @@ export function Home() {
                 <span className="text-duplicate" aria-hidden="true">Get a Quote</span>
               </span>
             </motion.a>
-            <motion.a 
-              href="#consultation" 
+            <motion.a
+              href="#consultation"
               className="cta-btn-secondary"
             >
               <span className="btn-text-roll">

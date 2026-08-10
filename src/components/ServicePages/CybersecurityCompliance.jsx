@@ -1,29 +1,52 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Navbar } from '../Navbar'
-import { ShieldCheck, FileCheck, Award, ArrowRight, Lock } from 'lucide-react'
 import '../../styles/servicePages.css'
 
 export default function CybersecurityCompliance() {
   const navigate = useNavigate()
 
   return (
-    <div className="service-page-layout">
+    <div className="service-page-layout light-theme">
       <Navbar />
 
-      <header className="service-page-hero">
-        <div className="service-page-container">
-          <div className="service-badge-pill" style={{ background: '#ccfbf1', color: '#0f766e' }}>
-            <ShieldCheck size={16} /> CYBERSECURITY &amp; COMPLIANCE ASSURANCE
+      <main className="service-hero-centered-screen">
+        <div className="service-hero-center-box">
+          {/* Top Category Badge */}
+          <div className="service-badge-line">
+            <span className="badge-dash">—</span> CYBERSECURITY &amp; COMPLIANCE ASSURANCE
           </div>
-          <h1 className="service-page-title">
-            Cybersecurity &amp; Compliance Assurance
+
+          {/* Main Headline */}
+          <h1 className="service-hero-heading">
+            Build controls that work - and assurance that <span className="highlight-text-gradient">stands up to scrutiny.</span>
           </h1>
-          <p className="service-page-subtitle">
-            Comprehensive readiness, gap assessments, and continuous compliance oversight across ISO 27001, ISO 27701, ISO 42001, NIST CSF, HITRUST, SOC 2, and global regulatory frameworks.
+
+          {/* Subtitle / Description */}
+          <p className="service-hero-description">
+            G3 Cyberspace supports management - system and cybersecurity - framework programmes from scope definition and gap assessment through implementation, evidence readiness, internal audit support, remediation and independent audit coordination.
           </p>
+
+          {/* Feature Pills */}
+          <div className="service-pills-wrapper">
+            <span className="service-pill-item">Framework readiness</span>
+            <span className="service-pill-item">Control implementation</span>
+            <span className="service-pill-item">Policies &amp; evidence</span>
+            <span className="service-pill-item">Internal audit support</span>
+            <span className="service-pill-item">Remediation &amp; certification coordination</span>
+          </div>
+
+          {/* Action Buttons Centered */}
+          <div className="service-buttons-centered">
+            <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+              <span className="btn-text">Get a Compliance Quote</span>
+            </button>
+            <button className="btn-discuss-req" onClick={() => navigate('/calendar')}>
+              <span className="btn-text">Discuss your requirement</span>
+            </button>
+          </div>
         </div>
-      </header>
+      </main>
     </div>
   )
 }

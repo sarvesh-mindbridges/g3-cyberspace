@@ -7,6 +7,12 @@ import logoBontaz from '../assets/logo/bontaz.png'
 import logoEncipher from '../assets/logo/encipher.png'
 import logoImit from '../assets/logo/imit.png'
 import logoMindbridges from '../assets/logo/mindbridges.png'
+import vaptmp4 from '../assets/video/vapt.mp4'
+import trpmmp4 from '../assets/video/trpm.mp4'
+import productsmp4 from '../assets/video/products.mp4'
+import homeimage1 from '../assets/homeimage.jpg'
+import homeimage2 from '../assets/homeimage2.png'
+
 
 
 const fadeIn = {
@@ -39,6 +45,24 @@ const staggerContainer = {
 }
 
 export function Home() {
+  /* ── Meta-Style 4-Media Hero Carousel (2 Videos + 2 Images) ── */
+  const heroMediaSlides = [
+    { type: 'video', src: vaptmp4, title: 'VAPT Operations Center' },
+    { type: 'video', src: trpmmp4, title: 'TRACS Cyber Risk Assurance' },
+    { type: 'image', src: homeimage1, title: 'Enterprise Digital Landscape' },
+    { type: 'image', src: homeimage2, title: 'Cyber Resilience Framework' }
+  ]
+
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  // Smooth automatic slide progression every 6 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroMediaSlides.length)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [heroMediaSlides.length])
+
   /* ── Clients Section 3D Scroll Reveal & Direction Parallax ── */
   const clientsRef = useRef(null)
   const { scrollYProgress: clientsScrollY } = useScroll({
@@ -357,46 +381,87 @@ export function Home() {
     }
   ]
 
+  /* ── Featured Video Showcase State ── */
+  const showcaseVideoRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(true)
+
+  const togglePlayPause = () => {
+    if (showcaseVideoRef.current) {
+      if (isPlaying) {
+        showcaseVideoRef.current.pause()
+        setIsPlaying(false)
+      } else {
+        showcaseVideoRef.current.play()
+        setIsPlaying(true)
+      }
+    }
+  }
+
   return (
     <div className="home-page-layout">
 
 
       {/* Hero Section */}
       <main className="home-container">
-        {/* Cyber Threat Security Domain Motion Canvas */}
+        {/* Cyber Threat Security Domain Motion Canvas & 4-Media Stacked Cross-Fade Carousel */}
         <div className="cyber-threat-canvas" aria-hidden="true">
-          {/* Light Theme Cyber Operations Command Center Background */}
-          <div className="cyber-soc-bg-image"></div>
+          <div className="hero-slide-stack">
+            {heroMediaSlides.map((slide, idx) => (
+              <motion.div
+                key={idx}
+                className="hero-slide-wrapper"
+                initial={false}
+                animate={{
+                  opacity: currentSlide === idx ? 1 : 0,
+                  scale: currentSlide === idx ? 1 : 1.03
+                }}
+                transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  pointerEvents: 'none',
+                  zIndex: currentSlide === idx ? 2 : 1
+                }}
+              >
+                {slide.type === 'video' ? (
+                  <video
+                    className="cyber-soc-bg-video"
+                    src={slide.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    className="cyber-soc-bg-video cyber-soc-bg-img"
+                    src={slide.src}
+                    alt={slide.title}
+                  />
+                )}
+              </motion.div>
+            ))}
+          </div>
 
           {/* Animated 3D Cyber Matrix & Radar Grid */}
           <div className="cyber-grid-plane"></div>
           <div className="threat-radar-sweep"></div>
 
-          {/* Flowing Cyber Threat Security Domain Nodes */}
-          <div className="threat-domain-node node-vapt">
-            <span className="node-pulse"></span>
-            <span className="node-tag">VAPT & CVE SCAN</span>
-          </div>
-          <div className="threat-domain-node node-soc">
-            <span className="node-pulse pulse-green"></span>
-            <span className="node-tag">SOC TELEMETRY</span>
-            <span className="node-metric">Live Stream</span>
-          </div>
-          <div className="threat-domain-node node-compliance">
-            <span className="node-pulse pulse-cyan"></span>
-            <span className="node-tag">ISO 27001 / DPDPA</span>
-            <span className="node-metric">Compliant</span>
-          </div>
-          <div className="threat-domain-node node-cloud">
-            <span className="node-pulse pulse-purple"></span>
-            <span className="node-tag">CLOUD THREAT INTEL</span>
-            <span className="node-metric">Zero Trust</span>
-          </div>
-
           {/* Glowing Animated Laser Data Streams */}
           <div className="threat-stream stream-1"></div>
           <div className="threat-stream stream-2"></div>
           <div className="threat-stream stream-3"></div>
+        </div>
+
+        {/* Meta-Style Vertical Right Carousel Indicators (4 Uniform Dots, No Pause Button) */}
+        <div className="hero-carousel-pagination">
+          {heroMediaSlides.map((slide, idx) => (
+            <button
+              key={idx}
+              className={`carousel-step-dot ${currentSlide === idx ? 'active' : ''}`}
+              onClick={() => setCurrentSlide(idx)}
+              title={slide.title}
+              aria-label={`Switch to ${slide.title}`}
+            />
+          ))}
         </div>
 
         <div className="hero-wrapper">
@@ -427,28 +492,28 @@ export function Home() {
               </motion.li>
             </motion.ul>
 
-            {/* 4 Pillar Horizontal Feature Cards */}
-            <motion.div className="pillar-horizontal-row" variants={staggerContainer}>
-              {pillars.map((pillar, idx) => (
-                <motion.div
-                  key={idx}
-                  className="pillar-horizontal-card"
-                  variants={fadeUp}
-                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                >
-                  <div className={`pillar-icon-badge ${pillar.badgeClass}`}>
-                    <span>{pillar.icon}</span>
-                  </div>
-                  <div className="pillar-card-content">
-                    <h3 className="pillar-card-title">{pillar.name}</h3>
-                    <p className="pillar-card-desc">{pillar.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* 2-point key value list */}
           </motion.div>
         </div>
       </main>
+
+      {/* 4 Pillar Horizontal Feature Bar after hero video and before clients section */}
+      <div className="pillar-horizontal-row">
+        {pillars.map((pillar, idx) => (
+          <div
+            key={idx}
+            className="pillar-horizontal-card"
+          >
+            <div className={`pillar-icon-badge ${pillar.badgeClass}`}>
+              <span>{pillar.icon}</span>
+            </div>
+            <div className="pillar-card-content">
+              <h3 className="pillar-card-title">{pillar.name}</h3>
+              <p className="pillar-card-desc">{pillar.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* Trusted Clients Section with 3D Scroll Reveal */}
       <section className="clients-section" ref={clientsRef}>
@@ -490,6 +555,62 @@ export function Home() {
             </motion.div>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* Featured Video Showcase Section (White Background with Play/Pause Control) */}
+      <section className="featured-video-section">
+        <div className="featured-video-container">
+          <motion.div
+            className="featured-video-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            <motion.div className="pro-services-kicker" variants={fadeIn}>
+              <span className="kicker-line"></span>
+              <span className="kicker-text">CYBER OVERVIEW SHOWCASE</span>
+              <span className="kicker-line"></span>
+            </motion.div>
+            <motion.h2 className="featured-video-title" variants={fadeUp}>
+              Experience G3 Cyberspace in action.
+            </motion.h2>
+            <motion.p className="featured-video-subtitle" variants={fadeUp}>
+              Watch how our comprehensive security operations and compliance frameworks safeguard modern enterprise infrastructures.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="video-player-card"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={fadeUp}
+          >
+            <div className="video-player-wrapper">
+              <video
+                ref={showcaseVideoRef}
+                className="showcase-video-element"
+                src={productsmp4}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+              {/* Overlay Play/Pause Button */}
+              <div className="video-controls-overlay">
+                <button
+                  className="video-toggle-btn"
+                  onClick={togglePlayPause}
+                  aria-label={isPlaying ? "Pause video" : "Play video"}
+                  title={isPlaying ? "Pause" : "Play"}
+                >
+                  {isPlaying ? <Pause size={20} strokeWidth={2.8} /> : <Play size={20} strokeWidth={2.8} fill="#ffffff" className="play-icon-offset" />}
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Professional Services Section */}

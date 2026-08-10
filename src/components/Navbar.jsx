@@ -1,14 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ChevronDown, Menu, X, Search, Calendar, Globe, ArrowRight } from 'lucide-react'
-import g3Logo from '../assets/logo/g3.jpg'
+import g3Logo from '../assets/logo/g3.png'
+import g3ai from '../assets/logo/g3ai.png'
 import '../styles/navbar.css'
 
-export function Navbar() {
+
+export function Navbar({ variant }) {
   const [activeTab, setActiveTab] = useState('Home')
   const [openDropdown, setOpenDropdown] = useState(null)
   const [hoverDropdown, setHoverDropdown] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navRef = useRef(null)
+
+  const navigate = useNavigate()
+  const logoSrc = variant === 'g3secai' ? g3ai : g3Logo
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -44,42 +50,48 @@ export function Navbar() {
       badgeBg: '#ccfbf1',
       badgeColor: '#0f766e',
       title: 'Cybersecurity & Compliance Assurance',
-      desc: 'ISO 27001, ISO 27701, ISO 42001, NIST CSF, HITRUST and related frameworks.'
+      desc: 'ISO 27001, ISO 27701, ISO 42001, NIST CSF, HITRUST and related frameworks.',
+      path: '/services/cybersecurity-compliance'
     },
     {
       badge: 'VA',
       badgeBg: '#ccfbf1',
       badgeColor: '#0f766e',
       title: 'VAPT & Security Testing',
-      desc: 'Web, API, mobile, network, cloud and thick - client testing.'
+      desc: 'Web, API, mobile, network, cloud and thick - client testing.',
+      path: '/services/vapt-security-testing'
     },
     {
       badge: 'TP',
       badgeBg: '#ccfbf1',
       badgeColor: '#0f766e',
       title: 'TPRM Professional Services',
-      desc: 'Programme design, assessments, evidence review and oversight.'
+      desc: 'Programme design, assessments, evidence review and oversight.',
+      path: '/services/tprm-services'
     },
     {
       badge: 'SO',
       badgeBg: '#ccfbf1',
       badgeColor: '#0f766e',
       title: 'SOC Operations',
-      desc: 'Monitoring, triage, incident support and operational maturity.'
+      desc: 'Monitoring, triage, incident support and operational maturity.',
+      path: '/services/soc-operations'
     },
     {
       badge: 'DP',
       badgeBg: '#ccfbf1',
       badgeColor: '#0f766e',
       title: 'Privacy & Data Protection',
-      desc: 'DPDPA, GDPR, Saudi PDPL, UAE privacy and governance support.'
+      desc: 'DPDPA, GDPR, Saudi PDPL, UAE privacy and governance support.',
+      path: '/services/privacy-data-protection'
     },
     {
       badge: 'AD',
       badgeBg: '#ccfbf1',
       badgeColor: '#0f766e',
       title: 'vCISO & vDPO Advisory',
-      desc: 'Retained security and privacy leadership, governance and executive support.'
+      desc: 'Retained security and privacy leadership, governance and executive support.',
+      path: '/services/vciso-vdpo-advisory'
     }
   ]
 
@@ -137,6 +149,9 @@ export function Navbar() {
 
   const handleNavClick = (item) => {
     setActiveTab(item.name)
+    if (item.name === 'Home') {
+      navigate('/')
+    }
     if (item.hasDropdown) {
       setOpenDropdown(prev => (prev === item.name ? null : item.name))
     } else {
@@ -164,7 +179,13 @@ export function Navbar() {
             <a href="#careers" className="before-nav-util-link">Careers</a>
             <div className="before-nav-icons">
               <button className="before-nav-icon-btn" aria-label="Search"><Search size={14} /></button>
-              <button className="before-nav-icon-btn" aria-label="Book Demo"><Calendar size={14} /></button>
+              <button 
+                className="before-nav-icon-btn" 
+                aria-label="Book Demo"
+                onClick={() => navigate('/calendar')}
+              >
+                <Calendar size={14} />
+              </button>
               <button className="before-nav-icon-btn" aria-label="Language"><Globe size={14} /></button>
             </div>
           </div>
@@ -174,8 +195,16 @@ export function Navbar() {
         <nav className="navbar-container">
           {/* Left Section: Brand Logo & Identity */}
           <div className="navbar-brand">
-            <a href="#" className="logo-link">
-              <img src={g3Logo} alt="G3 Cyberspace Logo" className="brand-logo-img" />
+            <a 
+              href="/" 
+              className="logo-link"
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveTab('Home')
+                navigate('/')
+              }}
+            >
+              <img src={logoSrc} alt={variant === 'g3secai' ? "G3SEC.ai Logo" : "G3 Cyberspace Logo"} className="brand-logo-img" />
             </a>
           </div>
 
@@ -213,7 +242,17 @@ export function Navbar() {
                             <h3 className="mega-dropdown-heading">Core services</h3>
                             <div className="services-grid">
                               {servicesList.map((srv, idx) => (
-                                <a key={idx} href={`#${srv.badge.toLowerCase()}`} className="service-card">
+                                <a 
+                                  key={idx} 
+                                  href={srv.path} 
+                                  className="service-card"
+                                  onClick={(e) => {
+                                    e.preventDefault()
+                                    setOpenDropdown(null)
+                                    setHoverDropdown(null)
+                                    navigate(srv.path)
+                                  }}
+                                >
                                   <div 
                                     className="service-badge"
                                     style={{ background: srv.badgeBg, color: srv.badgeColor }}
@@ -297,6 +336,12 @@ export function Navbar() {
                                 className="btn-quote full-width"
                                 onMouseMove={handleMagneticMove}
                                 onMouseLeave={handleMagneticLeave}
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  setOpenDropdown(null)
+                                  setHoverDropdown(null)
+                                  navigate('/g3secai')
+                                }}
                               >
                                 Explore G3SEC.ai
                               </a>
@@ -313,28 +358,45 @@ export function Navbar() {
 
           {/* Right Section: Action Buttons */}
           <div className="navbar-actions">
-            <a 
-              href="#talk" 
-              className="btn-talk"
-              onMouseMove={handleMagneticMove}
-              onMouseLeave={handleMagneticLeave}
-            >
-              <span className="btn-text-roll">
-                <span className="text-original">Talk to us</span>
-                <span className="text-duplicate" aria-hidden="true">Talk to us</span>
-              </span>
-            </a>
-            <a 
-              href="#quote" 
-              className="btn-quote"
-              onMouseMove={handleMagneticMove}
-              onMouseLeave={handleMagneticLeave}
-            >
-              <span className="btn-text-roll">
-                <span className="text-original">Get a Quote</span>
-                <span className="text-duplicate" aria-hidden="true">Get a Quote</span>
-              </span>
-            </a>
+            {variant === 'g3secai' ? (
+              <a 
+                href="/calendar" 
+                className="btn-book-demo"
+                onMouseMove={handleMagneticMove}
+                onMouseLeave={handleMagneticLeave}
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigate('/calendar')
+                }}
+              >
+                Book Demo
+              </a>
+            ) : (
+              <>
+                <a 
+                  href="#talk" 
+                  className="btn-talk"
+                  onMouseMove={handleMagneticMove}
+                  onMouseLeave={handleMagneticLeave}
+                >
+                  <span className="btn-text-roll">
+                    <span className="text-original">Talk to us</span>
+                    <span className="text-duplicate" aria-hidden="true">Talk to us</span>
+                  </span>
+                </a>
+                <a 
+                  href="#quote" 
+                  className="btn-quote"
+                  onMouseMove={handleMagneticMove}
+                  onMouseLeave={handleMagneticLeave}
+                >
+                  <span className="btn-text-roll">
+                    <span className="text-original">Get a Quote</span>
+                    <span className="text-duplicate" aria-hidden="true">Get a Quote</span>
+                  </span>
+                </a>
+              </>
+            )}
           </div>
 
           {/* Mobile Hamburger Toggle */}
@@ -367,8 +429,13 @@ export function Navbar() {
                         {servicesList.map((srv, idx) => (
                           <a 
                             key={idx}
-                            href={`#${srv.badge.toLowerCase()}`}
+                            href={srv.path}
                             className="mobile-dropdown-item"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              setMobileMenuOpen(false)
+                              navigate(srv.path)
+                            }}
                           >
                             <strong>{srv.badge}:</strong> {srv.title}
                           </a>
@@ -392,12 +459,28 @@ export function Navbar() {
               ))}
             </ul>
             <div className="mobile-actions">
-              <a href="#talk" className="btn-talk full-width" onClick={() => setMobileMenuOpen(false)}>
-                Talk to us
-              </a>
-              <a href="#quote" className="btn-quote full-width" onClick={() => setMobileMenuOpen(false)}>
-                Get a Quote
-              </a>
+              {variant === 'g3secai' ? (
+                <a 
+                  href="/calendar" 
+                  className="btn-book-demo full-width" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setMobileMenuOpen(false)
+                    navigate('/calendar')
+                  }}
+                >
+                  Book Demo
+                </a>
+              ) : (
+                <>
+                  <a href="#talk" className="btn-talk full-width" onClick={() => setMobileMenuOpen(false)}>
+                    Talk to us
+                  </a>
+                  <a href="#quote" className="btn-quote full-width" onClick={() => setMobileMenuOpen(false)}>
+                    Get a Quote
+                  </a>
+                </>
+              )}
             </div>
           </div>
         )}

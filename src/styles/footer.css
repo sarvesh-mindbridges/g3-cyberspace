@@ -38,14 +38,9 @@
 }
 
 .footer-logo-img {
-  height: 58px;
+  height: 48px;
   width: auto;
   object-fit: contain;
-  background: #ffffff;
-  padding: 6px 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
 }
 
@@ -85,54 +80,7 @@
   box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
 }
 
-.footer-platform-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1.25rem;
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(13, 148, 136, 0.35);
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #0f172a;
-  text-decoration: none;
-  width: fit-content;
-  overflow: hidden;
-  z-index: 1;
-  letter-spacing: 0.01em;
-  transition: color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
-  backdrop-filter: blur(8px);
-}
 
-.footer-platform-badge::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(135deg, #091b79 0%, #0d9488 100%);
-  border-radius: 999px;
-  transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: -1;
-}
-
-.footer-platform-badge:hover::before {
-  height: 100%;
-}
-
-.footer-platform-badge:hover {
-  color: #ffffff;
-  border-color: #091b79;
-  box-shadow: 0 6px 20px rgba(9, 27, 121, 0.25);
-  transform: translateY(-2px);
-}
-
-.footer-platform-badge:active {
-  transform: translateY(0) scale(0.98);
-}
 
 /* --- Links Columns --- */
 .footer-links-col {

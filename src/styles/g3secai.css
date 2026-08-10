@@ -1,0 +1,94 @@
+/* G3SEC.ai Page Styling */
+.g3secai-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #eef7fc 0%, #f4fafe 60%, #e6f3fa 100%);
+  overflow-x: clip;
+}
+
+.g3secai-hero-banner {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eef7fc 0%, #f4fafe 50%, #e6f3fa 100%);
+  padding: 4rem 2.5rem 5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.g3secai-hero-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.g3secai-hero-left {
+  flex: 1;
+  max-width: 650px;
+  text-align: left;
+}
+
+.g3secai-hero-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  color: #0b0f19;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem 0;
+}
+
+.g3secai-hero-subtitle {
+  font-size: 1.05rem;
+  color: #334155;
+  line-height: 1.55;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.g3secai-hero-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 680px;
+}
+
+.g3secai-banner-img {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  filter: drop-shadow(0 10px 30px rgba(15, 23, 42, 0.08));
+}
+
+@media (max-width: 992px) {
+  .g3secai-hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .g3secai-hero-left {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .g3secai-hero-right {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .g3secai-banner-img {
+    max-width: 100%;
+  }
+}

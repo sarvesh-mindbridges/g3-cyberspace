@@ -519,7 +519,7 @@ body {
     align-items: flex-start;
     gap: 12px;
     padding: 14px;
-    background: #f8fafc;
+    background: #fcf8fa;
     border: 1px solid #e2e8f0;
     border-radius: 14px;
     text-decoration: none;
@@ -736,6 +736,34 @@ body {
     box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
 }
 
+.btn-book-demo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 26px;
+    border-radius: 12px;
+    background: #1b7fa8;
+    color: #ffffff;
+    font-size: 0.93rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 4px 14px rgba(27, 127, 168, 0.35);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    flex-shrink: 0 !important;
+    width: auto !important;
+    max-width: max-content;
+}
+
+.btn-book-demo:hover {
+    background: #146688;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(27, 127, 168, 0.45);
+}
+
 /* --- Mobile Navigation & Zoom Breakpoints --- */
 .mobile-toggle {
     display: none;
@@ -896,7 +924,8 @@ body {
     }
 
     .btn-talk.full-width,
-    .btn-quote.full-width {
+    .btn-quote.full-width,
+    .btn-book-demo.full-width {
         width: 100% !important;
         text-align: center;
     }

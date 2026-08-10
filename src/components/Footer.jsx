@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import '../styles/footer.css'
-import logoG3 from '../assets/logo/g3.jpg'
+import logoG3 from '../assets/logo/g3.png'
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -40,21 +40,13 @@ export function Footer() {
             <div className="footer-logo-block">
               <img src={logoG3} alt="G3 Cyberspace" className="footer-logo-img" />
               <div className="footer-logo-text">
-                <span className="footer-company-name">G3 Cyberspace</span>
+                {/* <span className="footer-company-name">G3 Cyberspace</span> */}
                 <span className="footer-tagline">GOVERN · GUARD · GROW</span>
               </div>
             </div>
             <p className="footer-brand-desc">
               Cybersecurity, compliance, privacy, third-party risk and risk intelligence delivered through practical consulting, managed operations and purpose-built technology.
             </p>
-            <a 
-              href="https://g3sec.ai" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="footer-platform-badge"
-            >
-              G3SEC.ai is a G3 Cyberspace platform
-            </a>
           </motion.div>
 
           {/* Column 2: Services */}

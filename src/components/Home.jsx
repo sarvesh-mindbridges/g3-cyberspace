@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { animate, motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion'
+import { animate, motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValueEvent } from 'framer-motion'
 import { SearchCheck, ShieldCheck, Scale, Zap, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react'
 import '../styles/home.css'
 import logo20Cube from '../assets/logo/20cube.png'
@@ -10,8 +10,7 @@ import logoMindbridges from '../assets/logo/mindbridges.png'
 import vaptmp4 from '../assets/video/vapt.mp4'
 import trpmmp4 from '../assets/video/trpm.mp4'
 import productsmp4 from '../assets/video/products.mp4'
-import homeimage1 from '../assets/homeimage.jpg'
-import homeimage2 from '../assets/homeimage2.png'
+import socmp4 from '../assets/video/soc.mp4'
 
 
 
@@ -47,21 +46,87 @@ const staggerContainer = {
 export function Home() {
   /* ── Meta-Style 4-Media Hero Carousel (2 Videos + 2 Images) ── */
   const heroMediaSlides = [
-    { type: 'video', src: vaptmp4, title: 'VAPT Operations Center' },
-    { type: 'video', src: trpmmp4, title: 'TRACS Cyber Risk Assurance' },
-    { type: 'image', src: homeimage1, title: 'Enterprise Digital Landscape' },
-    { type: 'image', src: homeimage2, title: 'Cyber Resilience Framework' }
+    {
+      type: 'video',
+      src: socmp4,
+      title: 'SOC Operations Center',
+      heading: (
+        <>
+          <span className="title-accelerate">Real-Time Defense</span> <span className="title-growth">Powered by</span> <br />
+          <span className="highlight-cyber">24/7 SOC</span> <span className="highlight-gradient">Monitoring &</span> <span className="highlight-compliance">Incident Control.</span>
+        </>
+      ),
+      valueItems: [
+        { label: '24/7 Managed SOC operations', desc: ' — Proactive threat hunting, telemetry triage, and rapid incident containment.' },
+        { label: 'Zero-trust defense posture', desc: ' — Advanced SIEM/SOAR integration, cloud protection, and active threat response.' }
+      ]
+    },
+    {
+      type: 'video',
+      src: vaptmp4,
+      title: 'VAPT Operations Center',
+      heading: (
+        <>
+          <span className="title-accelerate">Accelerate Growth</span> <span className="title-growth">Backed by</span> <br />
+          <span className="highlight-cyber">Cyber</span> <span className="highlight-gradient">Resilience and</span> <span className="highlight-compliance">Compliance.</span>
+        </>
+      ),
+      valueItems: [
+        { label: 'Secure your digital landscape', desc: ' — VAPT, compliance assurance and risk management tailored to your environment.' },
+        { label: 'Meet evolving compliance demands', desc: ' — Third-party risk oversight, privacy and practical cybersecurity services.' }
+      ]
+    },
+    {
+      type: 'video',
+      src: trpmmp4,
+      title: 'TRACS Cyber Risk Assurance',
+      heading: (
+        <>
+          <span className="title-accelerate">Quantify Threat Exposures</span> <span className="title-growth">Driven by</span> <br />
+          <span className="highlight-cyber">Third-Party</span> <span className="highlight-gradient">Risk &</span> <span className="highlight-compliance">Governance.</span>
+        </>
+      ),
+      valueItems: [
+        { label: 'Automate vendor risk oversight', desc: ' — Continuous TPRM monitoring, supplier audits, and evidence assurance.' },
+        { label: 'Mitigate supply chain breaches', desc: ' — Real-time attack surface visibility and compliance readiness tracking.' }
+      ]
+    },
   ]
 
   const [currentSlide, setCurrentSlide] = useState(0)
+  const heroScrollContainerRef = useRef(null)
 
-  // Smooth automatic slide progression every 6 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroMediaSlides.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [heroMediaSlides.length])
+  // Track 300vh hero scroll container progress for Meta-style sticky video scrolling
+  const { scrollYProgress: heroScrollY } = useScroll({
+    target: heroScrollContainerRef,
+    offset: ["start start", "end end"]
+  })
+
+  // Smooth transparent opacity cross-fades between the 3 videos on scroll (Zero lines, seamless single component transition)
+  const videoOpacity0 = useTransform(heroScrollY, [0, 0.28, 0.45], [1, 1, 0])
+  const videoOpacity1 = useTransform(heroScrollY, [0.25, 0.45, 0.72], [0, 1, 0])
+  const videoOpacity2 = useTransform(heroScrollY, [0.55, 0.75, 1.0], [0, 1, 1])
+
+  const videoOpacities = [videoOpacity0, videoOpacity1, videoOpacity2]
+
+  useMotionValueEvent(heroScrollY, "change", (latest) => {
+    if (latest < 0.35) {
+      setCurrentSlide(0)
+    } else if (latest < 0.70) {
+      setCurrentSlide(1)
+    } else {
+      setCurrentSlide(2)
+    }
+  })
+
+  // Smooth jump to specific video slide on clicking pagination dots
+  const scrollToSlide = (idx) => {
+    if (!heroScrollContainerRef.current) return
+    const containerTop = heroScrollContainerRef.current.offsetTop
+    const scrollableHeight = heroScrollContainerRef.current.offsetHeight - window.innerHeight
+    const targetY = containerTop + (idx / (heroMediaSlides.length - 1)) * scrollableHeight
+    window.scrollTo({ top: targetY, behavior: 'smooth' })
+  }
 
   /* ── Clients Section 3D Scroll Reveal & Direction Parallax ── */
   const clientsRef = useRef(null)
@@ -401,101 +466,101 @@ export function Home() {
     <div className="home-page-layout">
 
 
-      {/* Hero Section */}
-      <main className="home-container">
-        {/* Cyber Threat Security Domain Motion Canvas & 4-Media Stacked Cross-Fade Carousel */}
-        <div className="cyber-threat-canvas" aria-hidden="true">
-          <div className="hero-slide-stack">
+      {/* Meta-Style Sticky Scroll Hero Section */}
+      <div className="hero-scroll-container" ref={heroScrollContainerRef}>
+        <main className="hero-sticky-frame">
+          {/* Cyber Threat Security Domain Motion Canvas */}
+          <div className="cyber-threat-canvas" aria-hidden="true">
+            {/* Seamless Video Stack with Smooth Transparent Cross-Fade (Zero Lines, 100% Single Component Feel) */}
+            <div className="hero-slide-stack">
+              {heroMediaSlides.map((slide, idx) => (
+                <motion.div
+                  key={idx}
+                  className="hero-slide-wrapper"
+                  style={{
+                    opacity: videoOpacities[idx],
+                    zIndex: currentSlide === idx ? 2 : 1
+                  }}
+                >
+                  {slide.type === 'video' ? (
+                    <video
+                      className="cyber-soc-bg-video"
+                      src={slide.src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      className="cyber-soc-bg-video cyber-soc-bg-img"
+                      src={slide.src}
+                      alt={slide.title}
+                    />
+                  )}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Animated 3D Cyber Matrix & Radar Grid */}
+            <div className="cyber-grid-plane"></div>
+            <div className="threat-radar-sweep"></div>
+
+            {/* Glowing Animated Laser Data Streams */}
+            <div className="threat-stream stream-1"></div>
+            <div className="threat-stream stream-2"></div>
+            <div className="threat-stream stream-3"></div>
+          </div>
+
+          {/* Meta-Style Vertical Right Carousel Indicators (3 Uniform Dots) */}
+          <div className="hero-carousel-pagination">
             {heroMediaSlides.map((slide, idx) => (
-              <motion.div
+              <button
                 key={idx}
-                className="hero-slide-wrapper"
-                initial={false}
-                animate={{
-                  opacity: currentSlide === idx ? 1 : 0,
-                  scale: currentSlide === idx ? 1 : 1.03
-                }}
-                transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  pointerEvents: 'none',
-                  zIndex: currentSlide === idx ? 2 : 1
-                }}
-              >
-                {slide.type === 'video' ? (
-                  <video
-                    className="cyber-soc-bg-video"
-                    src={slide.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                ) : (
-                  <img
-                    className="cyber-soc-bg-video cyber-soc-bg-img"
-                    src={slide.src}
-                    alt={slide.title}
-                  />
-                )}
-              </motion.div>
+                className={`carousel-step-dot ${currentSlide === idx ? 'active' : ''}`}
+                onClick={() => scrollToSlide(idx)}
+                title={slide.title}
+                aria-label={`Switch to ${slide.title}`}
+              />
             ))}
           </div>
 
-          {/* Animated 3D Cyber Matrix & Radar Grid */}
-          <div className="cyber-grid-plane"></div>
-          <div className="threat-radar-sweep"></div>
+          {/* Single Centered Hero Content - Updates Text Simultaneously With Each Video */}
+          <div className="hero-wrapper">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                className="hero-content"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <h1 className="hero-title">
+                  {heroMediaSlides[currentSlide].heading}
+                </h1>
 
-          {/* Glowing Animated Laser Data Streams */}
-          <div className="threat-stream stream-1"></div>
-          <div className="threat-stream stream-2"></div>
-          <div className="threat-stream stream-3"></div>
-        </div>
-
-        {/* Meta-Style Vertical Right Carousel Indicators (4 Uniform Dots, No Pause Button) */}
-        <div className="hero-carousel-pagination">
-          {heroMediaSlides.map((slide, idx) => (
-            <button
-              key={idx}
-              className={`carousel-step-dot ${currentSlide === idx ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(idx)}
-              title={slide.title}
-              aria-label={`Switch to ${slide.title}`}
-            />
-          ))}
-        </div>
-
-        <div className="hero-wrapper">
-          {/* Left Section: Core Copy & CTAs */}
-          <motion.div
-            className="hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.h1 className="hero-title" variants={fadeUp}>
-              <span className="title-accelerate">Accelerate Growth</span> <span className="title-growth">Backed by</span> <br />
-              <span className="highlight-cyber">Cyber</span> <span className="highlight-gradient">Resilience and</span> <span className="highlight-compliance">Compliance.</span>
-            </motion.h1>
-
-            <motion.ul className="hero-value-list" variants={staggerContainer}>
-              <motion.li className="hero-value-item" variants={fadeUp}>
-                <div>
-                  <strong className="hero-value-label">Secure your digital landscape</strong>
-                  <span className="hero-value-desc"> — VAPT, compliance assurance and risk management tailored to your environment.</span>
-                </div>
-              </motion.li>
-              <motion.li className="hero-value-item" variants={fadeUp}>
-                <div>
-                  <strong className="hero-value-label">Meet evolving compliance demands</strong>
-                  <span className="hero-value-desc"> — Third-party risk oversight, privacy and practical cybersecurity services.</span>
-                </div>
-              </motion.li>
-            </motion.ul>
-
-            {/* 2-point key value list */}
-          </motion.div>
-        </div>
-      </main>
+                <ul className="hero-value-list">
+                  {heroMediaSlides[currentSlide].valueItems.map((item, idx) => (
+                    <motion.li
+                      key={idx}
+                      className="hero-value-item"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: idx * 0.06, ease: 'easeOut' }}
+                    >
+                      <div>
+                        <strong className="hero-value-label">{item.label}</strong>
+                        <span className="hero-value-desc">{item.desc}</span>
+                      </div>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main>
+      </div>
 
       {/* 4 Pillar Horizontal Feature Bar after hero video and before clients section */}
       <div className="pillar-horizontal-row">

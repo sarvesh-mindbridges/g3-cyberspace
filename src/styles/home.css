@@ -6,10 +6,36 @@
 
 .home-page-layout {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: linear-gradient(135deg, #edf2f4 0%, #e8f0f5 20%, #edf0f3 40%, #eff0f2 60%, #fef3c7 80%, #f3e8ff 100%);
   background-size: 300% 300%;
   animation: cyberLinearGradientFlow 12s ease-in-out infinite alternate;
+}
+
+/* Meta-Style Sticky Scroll Hero Section */
+.hero-scroll-container {
+  width: 100%;
+  height: 360vh;
+  position: relative;
+  background: #090d16;
+}
+
+.hero-sticky-frame {
+  position: sticky;
+  top: 88px;
+  height: calc(100vh - 88px);
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+  perspective: 1200px;
+  background: #090d16;
+  z-index: 1;
 }
 
 .home-container {
@@ -42,7 +68,7 @@
   background: #090d16;
 }
 
-/* --- High-Tech Cyber Command Operations Center Video & Image Carousel Background --- */
+/* Full-Screen Seamless Video Stack (Zero Lines, 100% Single Component Feel) */
 .hero-slide-stack {
   position: absolute;
   inset: 0;
@@ -59,18 +85,18 @@
   z-index: 0;
   pointer-events: none;
   background: #090d16;
-  will-change: opacity, transform;
+  will-change: opacity;
 }
 
 .cyber-soc-bg-video {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.95;
   filter: brightness(1.02) contrast(1.05) saturate(1.08);
-  z-index: 0;
   pointer-events: none;
 }
 
@@ -103,7 +129,7 @@
   border: 1.5px solid rgba(255, 255, 255, 0.45);
   padding: 0;
   cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   outline: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -113,6 +139,7 @@
 .carousel-step-dot:hover {
   background: rgba(255, 255, 255, 0.75);
   border-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.15);
 }
 
 .carousel-step-dot.active {
@@ -121,7 +148,8 @@
   border-radius: 50%;
   background: #ffffff;
   border-color: #38bdf8;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.9), 0 0 4px #ffffff;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.95), 0 0 6px #ffffff;
+  transform: scale(1.28);
 }
 
 @keyframes cyberVideoMotion {
@@ -447,16 +475,18 @@
 }
 
 .hero-wrapper {
-  max-width: 1080px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 3.5rem;
+  justify-content: center;
   position: relative;
   z-index: 10;
   width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 /* --- Centered Hero Content --- */
@@ -465,22 +495,24 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: center;
   width: 100%;
-  padding-top: 20px;
+  max-width: 1050px;
+  margin: 0 auto;
 }
 
 /* High-Impact Attention-Grabbing Hero Title */
 .hero-title {
   font-family: 'Plus Jakarta Sans', 'Sora', 'Space Grotesk', sans-serif;
-  font-size: clamp(2.6rem, 4.6vw, 4.4rem);
+  font-size: clamp(1.8rem, 3.4vw, 3.1rem);
   font-weight: 800;
-  line-height: 1.18;
+  line-height: 1.25;
   color: #f8fafc;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.03em;
   text-align: center;
   width: 100%;
-  max-width: 1140px;
-  margin-bottom: 70px;
+  max-width: 1050px;
+  margin-bottom: 1.5rem;
   filter: drop-shadow(0 4px 20px rgba(2, 6, 23, 0.95)) drop-shadow(0 0 35px rgba(14, 165, 233, 0.4));
 }
 
@@ -1440,7 +1472,8 @@
 .video-player-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 45.25%; /* 16:9 Aspect Ratio */
+  padding-bottom: 45.25%;
+  /* 16:9 Aspect Ratio */
   height: 0;
   overflow: hidden;
   border-radius: 24px;
@@ -2224,6 +2257,7 @@
     width: calc(100% - 2rem);
     margin: 1.5rem auto 0;
   }
+
   .pillar-horizontal-card {
     flex: 1 1 45%;
     padding: 14px 16px;

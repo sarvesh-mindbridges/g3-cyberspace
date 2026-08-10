@@ -1320,8 +1320,8 @@
 }
 
 .client-logo-img {
-  max-height: 48px;
-  max-width: 145px;
+  max-height: 75px;
+  max-width: 175px;
   object-fit: contain;
   filter: none;
   transition: transform 0.25s ease;

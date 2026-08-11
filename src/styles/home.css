@@ -681,10 +681,8 @@
   align-items: stretch;
   justify-content: space-around;
   flex-wrap: nowrap;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
   box-sizing: border-box;
   padding: 1.25rem 2rem;
 }
@@ -710,11 +708,11 @@
   top: 20%;
   height: 60%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(15, 23, 42, 0.1);
 }
 
 .pillar-horizontal-card:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(13, 148, 136, 0.04);
 }
 
 .pillar-icon-badge {
@@ -771,21 +769,21 @@
   font-family: 'Plus Jakarta Sans', 'Sora', sans-serif;
   font-size: 0.98rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #0f172a;
   margin-bottom: 2px;
   letter-spacing: -0.01em;
   transition: color 0.2s ease;
 }
 
 .pillar-horizontal-card:hover .pillar-card-title {
-  color: #38bdf8;
+  color: #0d9488;
 }
 
 .pillar-card-desc {
   font-size: 0.78rem;
-  color: rgba(226, 232, 240, 0.85);
+  color: #64748b;
   line-height: 1.35;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 /* --- Expanded Luxury Goldish Assurance Section --- */
@@ -1386,64 +1384,93 @@
 .featured-video-section {
   width: 100%;
   background: #ffffff;
-  padding: 5.5rem 2rem;
+  padding: 8rem 2.5rem 8.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .featured-video-container {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1280px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
   align-items: center;
-  text-align: center;
+  gap: 3.5rem;
   box-sizing: border-box;
+  text-align: left;
 }
 
 .featured-video-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 880px;
-  margin: 0 auto 3rem;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 100%;
+  margin: 0;
+}
+
+.featured-video-header .kicker-text {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #0284c7;
+  text-transform: uppercase;
+}
+
+.featured-video-header .kicker-line {
+  width: 24px;
+  height: 3px;
+  background: #0284c7;
+  border-radius: 99px;
 }
 
 .featured-video-title {
   font-family: 'Plus Jakarta Sans', 'Sora', sans-serif;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.2;
   color: #0f172a;
   letter-spacing: -0.025em;
-  margin: 0.5rem 0 1rem;
+  margin: 0.75rem 0 1.25rem;
 }
 
 .featured-video-subtitle {
   font-size: 1.05rem;
   color: #475569;
-  line-height: 1.6;
+  line-height: 1.65;
   font-weight: 500;
-  max-width: 720px;
+  max-width: 540px;
+  margin: 0;
 }
 
 .video-player-card {
   width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14), 0 4px 16px rgba(15, 23, 42, 0.06);
   border: 1px solid rgba(15, 23, 42, 0.12);
   background: #0f172a;
   position: relative;
+}
+
+@media (max-width: 990px) {
+  .featured-video-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .featured-video-header {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .video-player-wrapper {
@@ -1577,6 +1604,7 @@
 /* --- Professional Services Section --- */
 .pro-services-section {
   width: 100%;
+  background: #ffffff;
   padding: 4.5rem 2rem 5.5rem;
   display: flex;
   justify-content: center;

@@ -630,17 +630,6 @@ export function Home() {
                 muted
                 playsInline
               />
-              {/* Overlay Play/Pause Button */}
-              <div className="video-controls-overlay">
-                <button
-                  className="video-toggle-btn"
-                  onClick={togglePlayPause}
-                  aria-label={isPlaying ? "Pause video" : "Play video"}
-                  title={isPlaying ? "Pause" : "Play"}
-                >
-                  {isPlaying ? <Pause size={20} strokeWidth={2.8} /> : <Play size={20} strokeWidth={2.8} fill="#ffffff" className="play-icon-offset" />}
-                </button>
-              </div>
             </div>
           </motion.div>
         </div>

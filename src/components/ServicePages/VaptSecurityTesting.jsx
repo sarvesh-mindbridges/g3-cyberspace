@@ -68,8 +68,7 @@ export default function VaptSecurityTesting() {
           {/* Main Headline */}
           <h1 className="service-hero-heading">
             Plan the right <br className="desktop-break" />
-            security <br className="desktop-break" />
-            assessment and <br className="desktop-break" />
+            security assessment and <br className="desktop-break" />
             receive a <span className="highlight-text-gradient">tailored quote.</span>
           </h1>
 

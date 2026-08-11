@@ -1,77 +1,122 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Navbar } from '../Navbar'
-import { Users, FileSpreadsheet, CheckSquare, ArrowRight, ShieldCheck } from 'lucide-react'
 import '../../styles/servicePages.css'
 
 export default function TprmServices() {
   const navigate = useNavigate()
 
+  const tprmCards = [
+    {
+      title: 'TPRM design',
+      desc: 'Policy, methodology, segmentation, roles, governance forums, risk acceptance and reporting design.'
+    },
+    {
+      title: 'Assessment operations',
+      desc: 'Risk intake, questionnaire selection, evidence review, control validation and risk recommendation support.'
+    },
+    {
+      title: 'Continuous oversight',
+      desc: 'Vendor posture visibility, issue follow - up, incident response coordination and supply - chain mapping.'
+    },
+    {
+      title: 'Programme uplift',
+      desc: 'Maturity assessment, backlog prioritisation, metrics and remediation roadmap development.'
+    },
+    {
+      title: 'Managed TPRM support',
+      desc: 'Dedicated or shared assessment support for vendor reviews, escalations and governance reporting.'
+    },
+    {
+      title: 'Platform enablement',
+      desc: 'TRACS 360 configuration, workflow alignment, templates and adoption support.'
+    }
+  ]
+
   return (
-    <div className="service-page-layout">
+    <div className="service-page-layout light-theme">
       <Navbar />
 
-      <header className="service-page-hero">
-        <div className="service-page-container">
-          <div className="service-badge-pill" style={{ background: '#ccfbf1', color: '#0f766e' }}>
-            <Users size={16} /> TPRM PROFESSIONAL SERVICES
+      <main className="service-hero-centered-screen">
+        <div className="service-hero-center-box">
+          {/* Top Category Badge */}
+          <div className="service-badge-line">
+            <span className="badge-dash">—</span> TPRM PROFESSIONAL SERVICES
           </div>
-          <h1 className="service-page-title">
-            Third-Party Risk Management (TPRM)
+
+          {/* Main Headline */}
+          <h1 className="service-hero-heading">
+            Build third - party risk management <br className="desktop-break" />
+            as an operating capability - <br className="desktop-break" />
+            not a questionnaire <br className="desktop-break" />
+            exercise.
           </h1>
-          <p className="service-page-subtitle">
-            End-to-end supply chain risk oversight, vendor security posture assessments, continuous evidence validation, and contract assurance.
+
+          {/* Subtitle / Description */}
+          <p className="service-hero-description">
+            G3 Cyberspace supports programme design, vendor risk classification, due diligence, evidence review, issue management and ongoing oversight across the third - party lifecycle.
           </p>
 
-          <div className="service-hero-actions">
-            <button className="service-btn-primary" onClick={() => navigate('/calendar')}>
-              Book TPRM Demo <ArrowRight size={16} />
+          {/* Action Buttons Centered */}
+          <div className="service-buttons-centered">
+            <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+              <span className="btn-text-roll">
+                <span className="text-original">Get a TPRM Quote</span>
+                <span className="text-duplicate" aria-hidden="true">Get a TPRM Quote</span>
+              </span>
             </button>
-            <button className="service-btn-secondary" onClick={() => navigate('/')}>
-              Explore Other Services
+            <button className="btn-discuss-req" onClick={() => navigate('/')}>
+              <span className="btn-text-roll">
+                <span className="text-original">Explore TRACS 360</span>
+                <span className="text-duplicate" aria-hidden="true">Explore TRACS 360</span>
+              </span>
             </button>
           </div>
 
-          <div className="frameworks-tags">
-            <span className="framework-tag">Vendor Risk Scoring</span>
-            <span className="framework-tag">Supplier Audits</span>
-            <span className="framework-tag">SIG / CAIQ Questionnaires</span>
-            <span className="framework-tag">Contract Assurance</span>
+          {/* Service Coverage Section (Centered below Hero) */}
+          <div className="tprm-coverage-section">
+            <div className="standards-kicker-line">
+              <span className="kicker-dash">—</span> SERVICE COVERAGE
+            </div>
+
+            <div className="tprm-coverage-header-row">
+              <h2 className="standards-heading left-aligned-heading">
+                Support across strategy, <br className="desktop-break" />
+                assessments and ongoing <br className="desktop-break" />
+                operations.
+              </h2>
+
+              <p className="tprm-header-note">
+                Use the service independently or combine it with TRACS 360 for workflow, visibility and scale.
+              </p>
+            </div>
+
+            {/* 6 Coverage Cards Grid with Left-to-Right Entrance Animation */}
+            <div className="tprm-cards-grid">
+              {tprmCards.map((card, index) => (
+                <motion.div
+                  key={index}
+                  className="standards-card-item tprm-card-item"
+                  initial={{ opacity: 0, x: -35 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.15 }}
+                  transition={{ 
+                    duration: 0.55, 
+                    delay: (index % 3) * 0.15, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <h3 className="standards-card-title">{card.title}</h3>
+                  <p className="standards-card-desc">{card.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </header>
-
-      <section className="service-details-section">
-        <div className="service-page-container">
-          <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#ffffff' }}>Supply Chain Risk Management Scope</h2>
-          
-          <div className="section-grid">
-            <div className="service-detail-card">
-              <div className="detail-card-icon"><FileSpreadsheet size={24} /></div>
-              <h3 className="detail-card-title">Vendor Intake &amp; Triage</h3>
-              <p className="detail-card-desc">
-                Automated vendor onboarding, risk tiering, and customized security questionnaires tailored to vendor criticality.
-              </p>
-            </div>
-
-            <div className="service-detail-card">
-              <div className="detail-card-icon"><CheckSquare size={24} /></div>
-              <h3 className="detail-card-title">Evidence &amp; Audit Validation</h3>
-              <p className="detail-card-desc">
-                Rigorous review of vendor SOC 2 reports, ISO certificates, VAPT summaries, and security policy attestations.
-              </p>
-            </div>
-
-            <div className="service-detail-card">
-              <div className="detail-card-icon"><ShieldCheck size={24} /></div>
-              <h3 className="detail-card-title">Continuous Supply Chain Oversight</h3>
-              <p className="detail-card-desc">
-                Ongoing monitoring of vendor cyber exposure, breach alerts, and contract compliance milestones.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </main>
     </div>
   )
 }

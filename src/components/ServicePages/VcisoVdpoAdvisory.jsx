@@ -1,77 +1,135 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Navbar } from '../Navbar'
-import { Briefcase, UserCheck, Shield, ArrowRight, BarChart3 } from 'lucide-react'
 import '../../styles/servicePages.css'
 
 export default function VcisoVdpoAdvisory() {
   const navigate = useNavigate()
 
+  const engagementItems = [
+    'vCISO and security roadmap ownership',
+    'vDPO and privacy governance',
+    'Governance, policy and control oversight',
+    'Risk and audit remediation oversight',
+    'Customer, board and auditor - facing assurance'
+  ]
+
+  const advisoryCards = [
+    {
+      title: 'Security leadership',
+      desc: 'Roadmaps, governance, risk decisions, policy oversight and executive reporting.'
+    },
+    {
+      title: 'Governance oversight',
+      desc: 'Policy direction, control ownership, management reporting and programme accountability.'
+    },
+    {
+      title: 'Privacy leadership',
+      desc: 'Privacy governance, programme monitoring, stakeholder guidance and escalation support.'
+    },
+    {
+      title: 'Customer assurance',
+      desc: 'Security questionnaires, due diligence responses, prospect discussions and contractual commitments.'
+    },
+    {
+      title: 'Risk and remediation',
+      desc: 'Prioritisation, ownership, tracking and closure of audit, assessment and control gaps.'
+    },
+    {
+      title: 'Retained support',
+      desc: 'Flexible ongoing access to experienced security, privacy and compliance professionals.'
+    }
+  ]
+
   return (
-    <div className="service-page-layout">
+    <div className="service-page-layout light-theme">
       <Navbar />
 
-      <header className="service-page-hero">
-        <div className="service-page-container">
-          <div className="service-badge-pill" style={{ background: '#ccfbf1', color: '#0f766e' }}>
-            <Briefcase size={16} /> vCISO &amp; vDPO ADVISORY
-          </div>
-          <h1 className="service-page-title">
-            Retained vCISO &amp; vDPO Leadership
-          </h1>
-          <p className="service-page-subtitle">
-            Executive cybersecurity and privacy leadership on demand. Strategic roadmap execution, board reporting, regulatory representation, and security program maturity.
-          </p>
+      <main className="vciso-hero-container">
+        {/* Top 2-Column Hero */}
+        <div className="vciso-hero-grid">
+          {/* Left Column */}
+          <div className="vciso-hero-left">
+            <div className="service-badge-line">
+              <span className="badge-dash">—</span> VCISO · VDPO · EXECUTIVE ADVISORY
+            </div>
 
-          <div className="service-hero-actions">
-            <button className="service-btn-primary" onClick={() => navigate('/calendar')}>
-              Book Executive Consultation <ArrowRight size={16} />
-            </button>
-            <button className="service-btn-secondary" onClick={() => navigate('/')}>
-              Explore Other Services
-            </button>
+            <h1 className="service-hero-heading left-aligned-heading">
+              Access <br className="desktop-break" />
+              experienced <br className="desktop-break" />
+              security and privacy <br className="desktop-break" />
+              leadership without <br className="desktop-break" />
+              building every role <br className="desktop-break" />
+              internally.
+            </h1>
+
+            <p className="service-hero-description left-aligned-desc">
+              Retained advisory support for security strategy, privacy governance, risk decisions, customer assurance and executive oversight.
+            </p>
+
+            <div className="service-buttons-left">
+              <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+                <span className="btn-text-roll">
+                  <span className="text-original">Get an Advisory Quote</span>
+                  <span className="text-duplicate" aria-hidden="true">Get an Advisory Quote</span>
+                </span>
+              </button>
+              <button className="btn-discuss-req" onClick={() => navigate('/calendar')}>
+                <span className="btn-text-roll">
+                  <span className="text-original">Meet our team</span>
+                  <span className="text-duplicate" aria-hidden="true">Meet our team</span>
+                </span>
+              </button>
+            </div>
           </div>
 
-          <div className="frameworks-tags">
-            <span className="framework-tag">Virtual CISO</span>
-            <span className="framework-tag">Virtual DPO</span>
-            <span className="framework-tag">Board Reporting</span>
-            <span className="framework-tag">Strategic Security Roadmap</span>
+          {/* Right Typical Engagements Card */}
+          <motion.div 
+            className="vciso-hero-right"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="engagements-card-box">
+              <span className="engagements-kicker">TYPICAL ENGAGEMENTS</span>
+              <div className="engagements-list">
+                {engagementItems.map((item, idx) => (
+                  <div key={idx} className="engagement-check-row">
+                    <span className="check-icon">✓</span>
+                    <span className="check-text">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* 6 Advisory Cards Grid (Centered below Hero) */}
+        <div className="vciso-cards-section">
+          <div className="vciso-cards-grid">
+            {advisoryCards.map((card, index) => (
+              <motion.div
+                key={index}
+                className="standards-card-item vciso-card-item"
+                initial={{ opacity: 0, x: -35 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.15 }}
+                transition={{ 
+                  duration: 0.55, 
+                  delay: (index % 3) * 0.15, 
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <h3 className="standards-card-title">{card.title}</h3>
+                <p className="standards-card-desc">{card.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </header>
-
-      <section className="service-details-section">
-        <div className="service-page-container">
-          <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#ffffff' }}>Executive Advisory Services</h2>
-          
-          <div className="section-grid">
-            <div className="service-detail-card">
-              <div className="detail-card-icon"><BarChart3 size={24} /></div>
-              <h3 className="detail-card-title">Strategic Security Roadmap &amp; Budget</h3>
-              <p className="detail-card-desc">
-                Aligning cybersecurity investments with business growth, risk appetite, and executive board expectations.
-              </p>
-            </div>
-
-            <div className="service-detail-card">
-              <div className="detail-card-icon"><Shield size={24} /></div>
-              <h3 className="detail-card-title">Retained CISO Leadership</h3>
-              <p className="detail-card-desc">
-                Acting CISO representation for customer security audits, enterprise vendor questionnaires, and board briefings.
-              </p>
-            </div>
-
-            <div className="service-detail-card">
-              <div className="detail-card-icon"><UserCheck size={24} /></div>
-              <h3 className="detail-card-title">Designated Virtual DPO</h3>
-              <p className="detail-card-desc">
-                External Data Protection Officer mandate fulfillment required under GDPR, Saudi PDPL, and DPDPA 2023.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </main>
     </div>
   )
 }

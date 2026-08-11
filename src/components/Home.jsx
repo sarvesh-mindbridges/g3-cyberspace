@@ -55,11 +55,7 @@ export function Home() {
           <span className="title-accelerate">Real-Time Defense</span> <span className="title-growth">Powered by</span> <br />
           <span className="highlight-cyber">24/7 SOC</span> <span className="highlight-gradient">Monitoring &</span> <span className="highlight-compliance">Incident Control.</span>
         </>
-      ),
-      valueItems: [
-        { label: '24/7 Managed SOC operations', desc: ' — Proactive threat hunting, telemetry triage, and rapid incident containment.' },
-        { label: 'Zero-trust defense posture', desc: ' — Advanced SIEM/SOAR integration, cloud protection, and active threat response.' }
-      ]
+      )
     },
     {
       type: 'video',
@@ -70,11 +66,7 @@ export function Home() {
           <span className="title-accelerate">Accelerate Growth</span> <span className="title-growth">Backed by</span> <br />
           <span className="highlight-cyber">Cyber</span> <span className="highlight-gradient">Resilience and</span> <span className="highlight-compliance">Compliance.</span>
         </>
-      ),
-      valueItems: [
-        { label: 'Secure your digital landscape', desc: ' — VAPT, compliance assurance and risk management tailored to your environment.' },
-        { label: 'Meet evolving compliance demands', desc: ' — Third-party risk oversight, privacy and practical cybersecurity services.' }
-      ]
+      )
     },
     {
       type: 'video',
@@ -85,11 +77,7 @@ export function Home() {
           <span className="title-accelerate">Quantify Threat Exposures</span> <span className="title-growth">Driven by</span> <br />
           <span className="highlight-cyber">Third-Party</span> <span className="highlight-gradient">Risk &</span> <span className="highlight-compliance">Governance.</span>
         </>
-      ),
-      valueItems: [
-        { label: 'Automate vendor risk oversight', desc: ' — Continuous TPRM monitoring, supplier audits, and evidence assurance.' },
-        { label: 'Mitigate supply chain breaches', desc: ' — Real-time attack surface visibility and compliance readiness tracking.' }
-      ]
+      )
     },
   ]
 
@@ -530,32 +518,15 @@ export function Home() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
-                className="hero-content"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
+                className="hero-content hero-glass-card"
+                initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -16, scale: 0.98 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               >
                 <h1 className="hero-title">
                   {heroMediaSlides[currentSlide].heading}
                 </h1>
-
-                <ul className="hero-value-list">
-                  {heroMediaSlides[currentSlide].valueItems.map((item, idx) => (
-                    <motion.li
-                      key={idx}
-                      className="hero-value-item"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.35, delay: idx * 0.06, ease: 'easeOut' }}
-                    >
-                      <div>
-                        <strong className="hero-value-label">{item.label}</strong>
-                        <span className="hero-value-desc">{item.desc}</span>
-                      </div>
-                    </motion.li>
-                  ))}
-                </ul>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -599,9 +570,6 @@ export function Home() {
               Trusted by growing and <br className="desktop-break" />
               established organisations.
             </h2>
-            <p className="clients-subtitle">
-              Selected organisations we have supported across cybersecurity, privacy, assurance and risk initiatives.
-            </p>
           </motion.div>
 
           {/* Infinite Marquee Carousel with Scroll Parallax */}

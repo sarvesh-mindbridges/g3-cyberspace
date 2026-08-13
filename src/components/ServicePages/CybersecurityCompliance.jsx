@@ -159,10 +159,6 @@ export default function CybersecurityCompliance() {
 
       <main className="service-hero-centered-screen">
         <div className="service-hero-center-box">
-          {/* Top Category Badge */}
-          <div className="service-badge-line">
-            <span className="badge-dash">—</span> CYBERSECURITY &amp; COMPLIANCE ASSURANCE
-          </div>
 
           {/* Main Headline */}
           <h1 className="service-hero-heading">

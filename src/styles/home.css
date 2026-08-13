@@ -152,6 +152,11 @@
   transform: scale(1.28);
 }
 
+.carousel-step-dot.active.active-green {
+  border-color: #34d399;
+  box-shadow: 0 0 16px rgba(52, 211, 153, 0.95), 0 0 6px #ffffff;
+}
+
 @keyframes cyberVideoMotion {
   0% {
     transform: scale(1) translate3d(0, 0, 0);
@@ -503,11 +508,11 @@
 
 .hero-glass-card {
   background: rgba(4, 10, 24, 0.16);
-  backdrop-filter: blur(8px) saturate(140%);
-  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  backdrop-filter: blur(5px) saturate(140%);
+  -webkit-backdrop-filter: blur(5px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 28px;
-  padding: 2.25rem 3rem;
+  border-radius: 24px;
+  padding: 1.75rem 2.5rem;
   box-shadow:
     0 16px 45px -10px rgba(0, 0, 0, 0.35),
     0 0 35px rgba(56, 189, 248, 0.12),
@@ -531,12 +536,13 @@
       rgba(14, 165, 233, 0.95) 50%,
       rgba(34, 211, 238, 0.7) 75%,
       transparent 100%);
+  box-shadow: none;
 }
 
 /* High-Impact Attention-Grabbing Hero Title */
 .hero-title {
   font-family: 'Plus Jakarta Sans', 'Sora', 'Space Grotesk', sans-serif;
-  font-size: clamp(1.8rem, 3.4vw, 3.1rem);
+  font-size: clamp(1.5rem, 2.7vw, 2.4rem);
   font-weight: 800;
   line-height: 1.25;
   color: #f8fafc;
@@ -580,6 +586,107 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.75));
+}
+
+/* Greenish Theme Overrides (Applied exclusively for greenishvideo.mp4 slide) */
+.hero-glass-card.theme-green {
+  box-shadow:
+    0 16px 45px -10px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(16, 185, 129, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.hero-glass-card.theme-green::before {
+  height: 3px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(16, 185, 129, 0.85) 20%,
+      rgba(52, 211, 153, 1) 50%,
+      rgba(16, 185, 129, 0.85) 80%,
+      transparent 100%);
+  box-shadow: 0 0 15px rgba(52, 211, 153, 0.9);
+}
+
+.hero-glass-card.theme-green .hero-title {
+  filter: drop-shadow(0 4px 20px rgba(2, 6, 23, 0.95)) drop-shadow(0 0 35px rgba(16, 185, 129, 0.35));
+}
+
+.hero-glass-card.theme-green .title-accelerate,
+.hero-glass-card.theme-green .title-growth {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 45%, #d1fae5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-glass-card.theme-green .highlight-cyber {
+  background: linear-gradient(135deg, #34d399 0%, #6ee7b7 50%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(52, 211, 153, 0.75));
+}
+
+.hero-glass-card.theme-green .highlight-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #d1fae5 50%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-glass-card.theme-green .highlight-compliance {
+  background: linear-gradient(135deg, #34d399 0%, #6ee7b7 50%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(52, 211, 153, 0.85));
+}
+
+/* Greenish-Black Theme Overrides (Applied exclusively for tprm.mp4 slide) */
+.hero-glass-card.theme-green-black {
+  background: rgba(2, 12, 10, 0.32);
+  box-shadow:
+    0 16px 45px -10px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(5, 150, 105, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.hero-glass-card.theme-green-black::before {
+  height: 3px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(4, 120, 87, 0.85) 20%,
+      rgba(16, 185, 129, 1) 50%,
+      rgba(4, 120, 87, 0.85) 80%,
+      transparent 100%);
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.75);
+}
+
+.hero-glass-card.theme-green-black .hero-title {
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 30px rgba(4, 120, 87, 0.5));
+}
+
+.hero-glass-card.theme-green-black .title-accelerate,
+.hero-glass-card.theme-green-black .title-growth {
+  background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 45%, #d1fae5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-glass-card.theme-green-black .highlight-cyber {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(52, 211, 153, 0.75));
+}
+
+.hero-glass-card.theme-green-black .highlight-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #d1fae5 50%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-glass-card.theme-green-black .highlight-compliance {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(52, 211, 153, 0.85));
 }
 
 @keyframes titleGradientFlow {
@@ -1312,6 +1419,7 @@
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .client-logo-card:hover {
@@ -1322,15 +1430,24 @@
 }
 
 .client-logo-img {
-  max-height: 75px;
-  max-width: 175px;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
   filter: none;
+  mix-blend-mode: multiply;
   transition: transform 0.25s ease;
+}
+
+.client-logo-img[alt*="Mindbridges"] {
+  transform: scale(1.35);
 }
 
 .client-logo-card:hover .client-logo-img {
   transform: scale(1.05);
+}
+
+.client-logo-card:hover .client-logo-img[alt*="Mindbridges"] {
+  transform: scale(1.42);
 }
 
 /* Responsive Layout */

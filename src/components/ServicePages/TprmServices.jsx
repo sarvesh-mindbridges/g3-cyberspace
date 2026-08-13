@@ -87,9 +87,46 @@ export default function TprmServices() {
                 operations.
               </h2>
 
-              <p className="tprm-header-note">
-                Use the service independently or combine it with TRACS 360 for workflow, visibility and scale.
-              </p>
+            <motion.p 
+              className="tprm-header-note"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.018
+                  }
+                }
+              }}
+            >
+              {"Use the service independently or combine it with TRACS 360 for workflow, visibility and scale.".split(" ").map((word, wIdx, array) => (
+                <span key={wIdx} className="typewriter-word">
+                  {word.split("").map((char, cIdx) => (
+                    <motion.span
+                      key={cIdx}
+                      className="typewriter-char"
+                      variants={{
+                        hidden: { opacity: 0, y: 1 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.05 }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                  {wIdx < array.length - 1 && <span className="typewriter-space">&nbsp;</span>}
+                </span>
+              ))}
+              <motion.span 
+                className="typewriter-cursor"
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+              >
+                |
+              </motion.span>
+            </motion.p>
             </div>
 
             {/* 6 Coverage Cards Grid with Left-to-Right Entrance Animation */}

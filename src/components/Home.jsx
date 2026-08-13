@@ -2,13 +2,13 @@ import React, { useRef, useEffect, useState } from 'react'
 import { animate, motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValueEvent } from 'framer-motion'
 import { SearchCheck, ShieldCheck, Scale, Zap, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react'
 import '../styles/home.css'
-import logo20Cube from '../assets/logo/20cube.png'
+import logo20Cube from '../assets/logo/20cube.avif'
 import logoBontaz from '../assets/logo/bontaz.png'
-import logoEncipher from '../assets/logo/encipher.png'
+import logoEncipher from '../assets/logo/encipher.webp'
 import logoImit from '../assets/logo/imit.png'
 import logoMindbridges from '../assets/logo/mindbridges.png'
-import vaptmp4 from '../assets/video/vapt.mp4'
-import trpmmp4 from '../assets/video/trpm.mp4'
+import greenishvideomp4 from '../assets/video/greenishvideo.mp4'
+import tprmmp4 from '../assets/video/tprm.mp4'
 import productsmp4 from '../assets/video/products.mp4'
 import socmp4 from '../assets/video/soc.mp4'
 
@@ -52,30 +52,30 @@ export function Home() {
       title: 'SOC Operations Center',
       heading: (
         <>
-          <span className="title-accelerate">Real-Time Defense</span> <span className="title-growth">Powered by</span> <br />
-          <span className="highlight-cyber">24/7 SOC</span> <span className="highlight-gradient">Monitoring &</span> <span className="highlight-compliance">Incident Control.</span>
+          <span className="title-accelerate">We Help Organisations Improve</span> <br />
+          <span className="highlight-cyber">SOC Coverage, Operating Rhythm</span> <span className="highlight-gradient">and</span> <span className="highlight-compliance">Visibility </span>
         </>
       )
     },
     {
       type: 'video',
-      src: vaptmp4,
+      src: greenishvideomp4,
       title: 'VAPT Operations Center',
       heading: (
         <>
-          <span className="title-accelerate">Accelerate Growth</span> <span className="title-growth">Backed by</span> <br />
+          <span className="title-accelerate">We Accelerate Growth</span> <span className="title-growth">Backed by</span> <br />
           <span className="highlight-cyber">Cyber</span> <span className="highlight-gradient">Resilience and</span> <span className="highlight-compliance">Compliance.</span>
         </>
       )
     },
     {
       type: 'video',
-      src: trpmmp4,
+      src: tprmmp4,
       title: 'TRACS Cyber Risk Assurance',
       heading: (
         <>
-          <span className="title-accelerate">Quantify Threat Exposures</span> <span className="title-growth">Driven by</span> <br />
-          <span className="highlight-cyber">Third-Party</span> <span className="highlight-gradient">Risk &</span> <span className="highlight-compliance">Governance.</span>
+          <span className="title-accelerate"> We support programme design</span> <span className="highlight-cyber">vendor risk classification, due diligence, evidence review, issue management</span> <br />
+         
         </>
       )
     },
@@ -505,7 +505,7 @@ export function Home() {
             {heroMediaSlides.map((slide, idx) => (
               <button
                 key={idx}
-                className={`carousel-step-dot ${currentSlide === idx ? 'active' : ''}`}
+                className={`carousel-step-dot ${currentSlide === idx ? (idx === 0 ? 'active' : 'active active-green') : ''}`}
                 onClick={() => scrollToSlide(idx)}
                 title={slide.title}
                 aria-label={`Switch to ${slide.title}`}
@@ -518,7 +518,7 @@ export function Home() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
-                className="hero-content hero-glass-card"
+                className={`hero-content hero-glass-card ${currentSlide === 1 ? 'theme-green' : currentSlide === 2 ? 'theme-green-black' : ''}`}
                 initial={{ opacity: 0, y: 16, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -16, scale: 0.98 }}

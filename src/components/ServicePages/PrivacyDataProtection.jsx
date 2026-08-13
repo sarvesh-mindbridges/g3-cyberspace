@@ -1,11 +1,64 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { ShieldCheck, Database, UserCheck, Lock, FileSearch, Globe, AlertTriangle, RefreshCw, Landmark, Building, Briefcase, HeartPulse } from 'lucide-react'
 import { Navbar } from '../Navbar'
 import '../../styles/servicePages.css'
+import protectionImage from '../../assets/images/protectionservices.jpeg'
+import services1 from '../../assets/images/services-1.jpg'
+import services2 from '../../assets/images/services-2.jpg'
+import services3 from '../../assets/images/services-3.jpg'
+import services4 from '../../assets/images/services-4.jpg'
+import services5 from '../../assets/images/services-5.jpg'
+import services6 from '../../assets/images/services-6.jpg'
+import services7 from '../../assets/images/services-7.jpg'
+import services8 from '../../assets/images/services-8.jpg'
 
 export default function PrivacyDataProtection() {
   const navigate = useNavigate()
+
+  const keyOfferings = [
+    {
+      icon: <ShieldCheck className="key-offering-icon" />,
+      image: services1,
+      title: 'Privacy Readiness & Gap Assessment'
+    },
+    {
+      icon: <Database className="key-offering-icon" />,
+      image: services2,
+      title: 'Data Mapping & ROPA Inventory'
+    },
+    {
+      icon: <UserCheck className="key-offering-icon" />,
+      image: services3,
+      title: 'Consent & Principal Rights Management'
+    },
+    {
+      icon: <Lock className="key-offering-icon" />,
+      image: services4,
+      title: 'Virtual DPO & Ongoing Privacy Governance'
+    },
+    {
+      icon: <FileSearch className="key-offering-icon" />,
+      image: services5,
+      title: 'Privacy Impact Assessment (DPIA)'
+    },
+    {
+      icon: <Globe className="key-offering-icon" />,
+      image: services6,
+      title: 'Vendor & Cross-Border Transfer Governance'
+    },
+    {
+      icon: <AlertTriangle className="key-offering-icon" />,
+      image: services7,
+      title: 'Privacy Breach & Incident Response'
+    },
+    {
+      icon: <RefreshCw className="key-offering-icon" />,
+      image: services8,
+      title: 'Data Lifecycle & Retention Management'
+    }
+  ]
 
   const dpdpMiniCards = [
     {
@@ -38,7 +91,8 @@ export default function PrivacyDataProtection() {
     {
       badge: 'IN',
       badgeBg: '#0d9488',
-      title: 'India - DPDP Act & Rules',
+      icon: <ShieldCheck size={20} color="#ffffff" />,
+      title: 'India – DPDP Act & Rules',
       subtitle: 'Primary implementation focus for organisations processing digital personal data in India or offering goods and services to individuals in India.',
       bullets: [
         'Notice, consent and lawful processing',
@@ -50,7 +104,8 @@ export default function PrivacyDataProtection() {
     {
       badge: 'EU',
       badgeBg: '#2563eb',
-      title: 'EU / EEA - GDPR',
+      icon: <Globe size={20} color="#ffffff" />,
+      title: 'EU / EEA – GDPR',
       subtitle: 'Governance support across controller and processor obligations, lawful bases, rights, DPIAs, records, transfers and accountability.',
       bullets: [
         'ROPA and lawful - basis mapping',
@@ -61,7 +116,8 @@ export default function PrivacyDataProtection() {
     {
       badge: 'KSA',
       badgeBg: '#0f766e',
-      title: 'Saudi Arabia - PDPL',
+      icon: <Landmark size={20} color="#ffffff" />,
+      title: 'Saudi Arabia – PDPL',
       subtitle: 'Readiness and operational support aligned to the Saudi Personal Data Protection Law, its Implementing Regulations and transfer requirements.',
       bullets: [
         'Controller and processor responsibilities',
@@ -72,7 +128,8 @@ export default function PrivacyDataProtection() {
     {
       badge: 'UAE',
       badgeBg: '#0284c7',
-      title: 'UAE - Federal PDPL',
+      icon: <Building size={20} color="#ffffff" />,
+      title: 'UAE – Federal PDPL',
       subtitle: 'Privacy governance for organisations operating under the UAE federal personal - data protection framework.',
       bullets: [
         'Processing purpose and transparency',
@@ -83,6 +140,7 @@ export default function PrivacyDataProtection() {
     {
       badge: 'FC',
       badgeBg: '#7c3aed',
+      icon: <Briefcase size={20} color="#ffffff" />,
       title: 'DIFC, ADGM & QFC',
       subtitle: 'Support for financial - centre privacy regimes and organisations operating across multiple Middle East jurisdictions.',
       bullets: [
@@ -94,6 +152,7 @@ export default function PrivacyDataProtection() {
     {
       badge: 'HC',
       badgeBg: '#14b8a6',
+      icon: <HeartPulse size={20} color="#ffffff" />,
       title: 'Healthcare & sector privacy',
       subtitle: 'Privacy - readiness support where health information, patient data, employee data or regulated sector information requires enhanced controls.',
       bullets: [
@@ -180,71 +239,144 @@ export default function PrivacyDataProtection() {
       <Navbar />
 
       <main className="service-hero-centered-screen">
-        <div className="service-hero-center-box">
-          {/* Top Category Badge */}
-          <div className="service-badge-line">
-            <span className="badge-dash">—</span> DATA PRIVACY SERVICES
+        <div className="service-hero-center-box service-hero-split-layout">
+          {/* Left Text Column */}
+          <div className="service-hero-text-col">
+            {/* Main Headline */}
+            <h1 className="service-hero-heading">
+              Build privacy governance that scales across{" "}
+              <span className="highlight-text-gradient">regulations, markets and growth.</span>
+            </h1>
+
+            {/* Subtitle / Description */}
+            <p className="service-hero-description">
+              G3 Cyberspace helps organisations translate privacy requirements into practical governance, accountable ownership and sustainable operating controls across DPDPA, GDPR, Saudi Arabia's PDPL, UAE privacy regimes, financial - centre requirements and healthcare privacy expectations.
+            </p>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="service-hero-heading">
-            Build privacy <br className="desktop-break" />
-            governance that <br className="desktop-break" />
-            scales <span className="highlight-text-gradient">across <br className="desktop-break" />
-            regulations, <br className="desktop-break" />
-            markets and <br className="desktop-break" />
-            growth.</span>
-          </h1>
-
-          {/* Subtitle / Description */}
-          <p className="service-hero-description">
-            G3 Cyberspace helps organisations translate privacy requirements into practical governance, accountable ownership and sustainable operating controls across DPDPA, GDPR, Saudi Arabia's PDPL, UAE privacy regimes, financial - centre requirements and healthcare privacy expectations.
-          </p>
-
-          {/* Feature Pills Wrapper */}
-          <div className="service-pills-wrapper">
-            <span className="service-pill-item">Global privacy readiness</span>
-            <span className="service-pill-item">Privacy governance</span>
-            <span className="service-pill-item">Consent and rights operations</span>
-            <span className="service-pill-item">DPIA and risk</span>
-            <span className="service-pill-item">vDPO support</span>
+          {/* Right Image Column */}
+          <div className="service-hero-image-col">
+            <motion.div 
+              className="service-hero-image-wrapper"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            >
+              <img 
+                src={protectionImage} 
+                alt="Privacy and Data Protection Services" 
+                className="service-hero-img" 
+              />
+            </motion.div>
           </div>
+        </div>
 
-          {/* Action Buttons Centered */}
-          <div className="service-buttons-centered">
-            <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
-              <span className="btn-text-roll">
-                <span className="text-original">Get a Privacy Quote</span>
-                <span className="text-duplicate" aria-hidden="true">Get a Privacy Quote</span>
-              </span>
-            </button>
-            <button className="btn-discuss-req" onClick={() => navigate('/calendar')}>
-              <span className="btn-text-roll">
-                <span className="text-original">Discuss your privacy programme</span>
-                <span className="text-duplicate" aria-hidden="true">Discuss your privacy programme</span>
-              </span>
-            </button>
-            <button className="btn-discuss-req" onClick={() => navigate('/')}>
-              <span className="btn-text-roll">
-                <span className="text-original">Explore privacy automation</span>
-                <span className="text-duplicate" aria-hidden="true">Explore privacy automation</span>
-              </span>
-            </button>
-          </div>
+        {/* Action Buttons Centered Across Screen */}
+        <div className="service-buttons-centered" style={{ marginTop: '2.5rem', marginBottom: '1rem' }}>
+          <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+            <span className="btn-text-roll">
+              <span className="text-original">Get a Privacy Quote</span>
+              <span className="text-duplicate" aria-hidden="true">Get a Privacy Quote</span>
+            </span>
+          </button>
+          <button className="btn-discuss-req" onClick={() => navigate('/calendar')}>
+            <span className="btn-text-roll">
+              <span className="text-original">Discuss your privacy programme</span>
+              <span className="text-duplicate" aria-hidden="true">Discuss your privacy programme</span>
+            </span>
+          </button>
+          <button className="btn-discuss-req" onClick={() => navigate('/')}>
+            <span className="btn-text-roll">
+              <span className="text-original">Explore privacy automation</span>
+              <span className="text-duplicate" aria-hidden="true">Explore privacy automation</span>
+            </span>
+          </button>
+        </div>
 
-          {/* DPDPA Implementation Expertise Box (Dark Card Container) */}
+          {/* Key Offerings Section */}
+          <section className="key-offerings-section">
+            <div className="key-offerings-header-row">
+              <div className="heading-with-arrow-box">
+                <h2 className="standards-heading left-aligned-heading">
+                  Key Offerings for <br className="desktop-break" />
+                  Data Protection Compliance
+                </h2>
+
+                <motion.div 
+                  className="heading-pointer-arrow-standalone"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  animate={{ y: [0, 8, 0], x: [0, 4, 0] }}
+                  transition={{ 
+                    y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+                    x: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+                    duration: 0.6
+                  }}
+                >
+                  <svg width="100" height="70" viewBox="0 0 100 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path 
+                      d="M10 10 C 35 15, 65 30, 85 55 M 66 55 H 85 V 36" 
+                      stroke="url(#pointing-grad-long)" 
+                      strokeWidth="4" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    />
+                    <defs>
+                      <linearGradient id="pointing-grad-long" x1="10" y1="10" x2="85" y2="55" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#0d9488" />
+                        <stop offset="0.5" stopColor="#06b6d4" />
+                        <stop offset="1" stopColor="#0284c7" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </motion.div>
+              </div>
+
+              <p className="key-offerings-header-note">
+                End-to-end privacy governance, technical compliance, and operational controls built to sustain trust and regulatory compliance.
+              </p>
+            </div>
+
+            <div className="key-offerings-grid">
+              {keyOfferings.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="key-offering-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.15 }}
+                  transition={{ 
+                    duration: 0.55, 
+                    delay: (index % 4) * 0.1, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="key-offering-image-banner">
+                    <img src={item.image} alt={item.title} className="key-offering-card-img" />
+                  </div>
+                  <div className="key-offering-body">
+                    <h3 className="key-offering-title">{item.title}</h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* DPDPA Implementation Expertise Box (Light Theme Card Container) */}
           <motion.div 
             className="dpdp-expertise-container"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 35, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="dpdp-expertise-box">
               {/* Left Column */}
               <div className="dpdp-box-left">
                 <div className="standards-kicker-line light-kicker">
-                  <span className="kicker-dash">—</span> DPDPA IMPLEMENTATION EXPERTISE
+                  DPDPA IMPLEMENTATION EXPERTISE
                 </div>
                 <h2 className="dpdp-box-title">
                   Prepare for India's privacy regime with a practical readiness programme.
@@ -263,10 +395,19 @@ export default function PrivacyDataProtection() {
               {/* Right 6 Mini Grid Cards */}
               <div className="dpdp-box-right-grid">
                 {dpdpMiniCards.map((card, idx) => (
-                  <div key={idx} className="dpdp-mini-card">
+                  <motion.div 
+                    key={idx} 
+                    className="dpdp-mini-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     <h4 className="dpdp-mini-title">{card.title}</h4>
                     <p className="dpdp-mini-desc">{card.desc}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -275,7 +416,7 @@ export default function PrivacyDataProtection() {
           {/* Regulatory Coverage Section (6 Regional Cards) */}
           <div className="privacy-regulatory-section">
             <div className="standards-kicker-line">
-              <span className="kicker-dash">—</span> REGULATORY COVERAGE
+              REGULATORY COVERAGE
             </div>
 
             <div className="tprm-coverage-header-row">
@@ -285,9 +426,46 @@ export default function PrivacyDataProtection() {
                 Middle East.
               </h2>
 
-              <p className="tprm-header-note">
-                We help organisations build a common privacy operating model while accounting for the requirements, terminology and regulatory expectations of each jurisdiction.
-              </p>
+            <motion.p 
+              className="tprm-header-note"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.018
+                  }
+                }
+              }}
+            >
+              {"We help organisations build a common privacy operating model while accounting for the requirements, terminology and regulatory expectations of each jurisdiction.".split(" ").map((word, wIdx, array) => (
+                <span key={wIdx} className="typewriter-word">
+                  {word.split("").map((char, cIdx) => (
+                    <motion.span
+                      key={cIdx}
+                      className="typewriter-char"
+                      variants={{
+                        hidden: { opacity: 0, y: 1 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.05 }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                  {wIdx < array.length - 1 && <span className="typewriter-space">&nbsp;</span>}
+                </span>
+              ))}
+              <motion.span 
+                className="typewriter-cursor"
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+              >
+                |
+              </motion.span>
+            </motion.p>
             </div>
 
             {/* 6 Regional Cards Grid */}
@@ -307,8 +485,30 @@ export default function PrivacyDataProtection() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="regional-badge-squircle" style={{ background: card.badgeBg }}>
-                    {card.badge}
+                  <div className="regional-badge-header-row" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.1rem' }}>
+                    <div className="regional-badge-icon-box" style={{ 
+                      width: '40px', 
+                      height: '40px', 
+                      borderRadius: '12px', 
+                      background: card.badgeBg, 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)'
+                    }}>
+                      {card.icon}
+                    </div>
+                    <span className="regional-badge-label" style={{ 
+                      fontSize: '0.82rem', 
+                      fontWeight: '800', 
+                      color: card.badgeBg, 
+                      background: card.badgeBg + '1c', 
+                      padding: '0.35rem 0.7rem', 
+                      borderRadius: '8px',
+                      letterSpacing: '0.05em'
+                    }}>
+                      {card.badge}
+                    </span>
                   </div>
                   <h3 className="standards-card-title">{card.title}</h3>
                   <p className="standards-card-desc">{card.subtitle}</p>
@@ -327,18 +527,52 @@ export default function PrivacyDataProtection() {
 
           {/* Privacy Operating Model Section (4 Steps) */}
           <div className="privacy-opmodel-section">
-            <div className="standards-kicker-line">
-              <span className="kicker-dash">—</span> PRIVACY OPERATING MODEL
-            </div>
 
             <h2 className="standards-heading">
               From data discovery to <br className="desktop-break" />
               demonstrable accountability.
             </h2>
 
-            <p className="standards-desc-centered">
-              Our approach combines legal and regulatory interpretation with process design, technology enablement, contracts, training and evidence.
-            </p>
+            <motion.p 
+              className="standards-desc-centered"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.018
+                  }
+                }
+              }}
+            >
+              {"Our approach combines legal and regulatory interpretation with process design, technology enablement, contracts, training and evidence.".split(" ").map((word, wIdx, array) => (
+                <span key={wIdx} className="typewriter-word">
+                  {word.split("").map((char, cIdx) => (
+                    <motion.span
+                      key={cIdx}
+                      className="typewriter-char"
+                      variants={{
+                        hidden: { opacity: 0, y: 1 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.05 }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                  {wIdx < array.length - 1 && <span className="typewriter-space">&nbsp;</span>}
+                </span>
+              ))}
+              <motion.span 
+                className="typewriter-cursor"
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+              >
+                |
+              </motion.span>
+            </motion.p>
 
             {/* 4 Steps Grid */}
             <div className="delivery-cards-grid">
@@ -367,9 +601,6 @@ export default function PrivacyDataProtection() {
 
           {/* Service Capabilities Section (9 Capability Cards Grid) */}
           <div className="privacy-capabilities-section">
-            <div className="standards-kicker-line">
-              <span className="kicker-dash">—</span> SERVICE CAPABILITIES
-            </div>
 
             <div className="tprm-coverage-header-row">
               <h2 className="standards-heading left-aligned-heading">
@@ -378,9 +609,46 @@ export default function PrivacyDataProtection() {
                 governance.
               </h2>
 
-              <p className="tprm-header-note">
-                Engage us for a focused assessment, end - to - end implementation, retained vDPO support or targeted improvement programme.
-              </p>
+            <motion.p 
+              className="tprm-header-note"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.018
+                  }
+                }
+              }}
+            >
+              {"Engage us for a focused assessment, end - to - end implementation, retained vDPO support or targeted improvement programme.".split(" ").map((word, wIdx, array) => (
+                <span key={wIdx} className="typewriter-word">
+                  {word.split("").map((char, cIdx) => (
+                    <motion.span
+                      key={cIdx}
+                      className="typewriter-char"
+                      variants={{
+                        hidden: { opacity: 0, y: 1 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.05 }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                  {wIdx < array.length - 1 && <span className="typewriter-space">&nbsp;</span>}
+                </span>
+              ))}
+              <motion.span 
+                className="typewriter-cursor"
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+              >
+                |
+              </motion.span>
+            </motion.p>
             </div>
 
             {/* 9 Capability Cards Grid */}
@@ -413,6 +681,7 @@ export default function PrivacyDataProtection() {
                 G3 Cyberspace provides privacy readiness, implementation, governance and advisory support. Jurisdiction - specific legal opinions should be obtained from qualified legal counsel where required.
               </p>
             </div>
+          </div>
 
             {/* Build Your Privacy Programme CTA Banner Box */}
             <motion.div 
@@ -426,7 +695,7 @@ export default function PrivacyDataProtection() {
                 {/* Left Text Content */}
                 <div className="privacy-cta-left">
                   <div className="standards-kicker-line">
-                    <span className="kicker-dash">—</span> BUILD YOUR PRIVACY PROGRAMME
+                    BUILD YOUR PRIVACY PROGRAMME
                   </div>
                   <h2 className="privacy-cta-title">
                     Start with DPDPA readiness - or <br className="desktop-break" />
@@ -455,10 +724,7 @@ export default function PrivacyDataProtection() {
                 </div>
               </div>
             </motion.div>
-          </div>
-
+          </main>
         </div>
-      </main>
-    </div>
-  )
-}
+      )
+    }

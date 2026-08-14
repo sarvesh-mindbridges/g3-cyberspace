@@ -60,10 +60,7 @@ export default function VaptSecurityTesting() {
 
       <main className="service-hero-centered-screen">
         <div className="service-hero-center-box">
-          {/* Top Category Badge */}
-          <div className="service-badge-line">
-            <span className="badge-dash">—</span> VAPT &amp; SECURITY TESTING
-          </div>
+
 
           {/* Main Headline */}
           <h1 className="service-hero-heading">
@@ -73,20 +70,9 @@ export default function VaptSecurityTesting() {
           </h1>
 
           {/* Subtitle / Description */}
-          <p className="service-hero-description">
+          <p className="service-hero-description left-aligned-hero-desc">
             Choose the testing type, assessment model, target environment and asset volumes so we can estimate the effort and prepare a tailored commercial quote.
           </p>
-
-          {/* Feature Pills Wrapper */}
-          <div className="service-pills-wrapper">
-            <span className="service-pill-item">Web applications</span>
-            <span className="service-pill-item">APIs</span>
-            <span className="service-pill-item">Mobile</span>
-            <span className="service-pill-item">External network</span>
-            <span className="service-pill-item">Internal network</span>
-            <span className="service-pill-item">Cloud</span>
-            <span className="service-pill-item">Thick client</span>
-          </div>
 
           {/* Action Buttons Centered */}
           <div className="service-buttons-centered">

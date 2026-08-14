@@ -1,62 +1,47 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ShieldCheck, Database, UserCheck, Lock, FileSearch, Globe, AlertTriangle, RefreshCw, Landmark, Building, Briefcase, HeartPulse } from 'lucide-react'
+import { ShieldCheck, Scale, Globe, Landmark, Building2, Briefcase, HeartPulse, Database, UserCheck, Lock, FileSearch, AlertTriangle, RefreshCw, Building } from 'lucide-react'
 import { Navbar } from '../Navbar'
 import '../../styles/servicePages.css'
 import protectionImage from '../../assets/images/protectionservices.jpeg'
-import services1 from '../../assets/images/services-1.jpg'
-import services2 from '../../assets/images/services-2.jpg'
-import services3 from '../../assets/images/services-3.jpg'
-import services4 from '../../assets/images/services-4.jpg'
-import services5 from '../../assets/images/services-5.jpg'
-import services6 from '../../assets/images/services-6.jpg'
-import services7 from '../../assets/images/services-7.jpg'
-import services8 from '../../assets/images/services-8.jpg'
+
 
 export default function PrivacyDataProtection() {
   const navigate = useNavigate()
 
   const keyOfferings = [
     {
-      icon: <ShieldCheck className="key-offering-icon" />,
-      image: services1,
-      title: 'Privacy Readiness & Gap Assessment'
+      title: 'Privacy Readiness Assessment',
+      desc: 'Evaluate current privacy maturity, data processing practices, and baseline regulatory readiness against global privacy standards.'
     },
     {
-      icon: <Database className="key-offering-icon" />,
-      image: services2,
-      title: 'Data Mapping & ROPA Inventory'
+      title: 'Regulatory Assessments',
+      desc: 'Gap analysis and compliance alignment for DPDPA, GDPR, PDPL, and other regional data protection regulations.'
     },
     {
-      icon: <UserCheck className="key-offering-icon" />,
-      image: services3,
-      title: 'Consent & Principal Rights Management'
+      title: 'Product Assessments',
+      desc: 'Privacy-by-design reviews for software, digital platforms, AI features, and user data intake flows.'
     },
     {
-      icon: <Lock className="key-offering-icon" />,
-      image: services4,
-      title: 'Virtual DPO & Ongoing Privacy Governance'
+      title: 'Custom Framework Development',
+      desc: 'Tailored privacy governance frameworks, operating structures, and policy matrices built for your organization.'
     },
     {
-      icon: <FileSearch className="key-offering-icon" />,
-      image: services5,
-      title: 'Privacy Impact Assessment (DPIA)'
+      title: 'Third-Party privacy risk management',
+      desc: 'Assess, audit, and govern vendor data handling, data processing agreements, and third-party privacy risks.'
     },
     {
-      icon: <Globe className="key-offering-icon" />,
-      image: services6,
-      title: 'Vendor & Cross-Border Transfer Governance'
+      title: 'Policy and Process Creation',
+      desc: 'Develop operational privacy policies, data subject request workflows, consent notices, and breach protocols.'
     },
     {
-      icon: <AlertTriangle className="key-offering-icon" />,
-      image: services7,
-      title: 'Privacy Breach & Incident Response'
+      title: 'Data Lifecycle Management',
+      desc: 'Define data minimisation, retention schedules, storage limits, and secure disposal practices across systems.'
     },
     {
-      icon: <RefreshCw className="key-offering-icon" />,
-      image: services8,
-      title: 'Data Lifecycle & Retention Management'
+      title: 'Workforce Privacy Integration',
+      desc: 'Train employees, establish privacy ownership, and embed data protection awareness into day-to-day operations.'
     }
   ]
 
@@ -91,20 +76,19 @@ export default function PrivacyDataProtection() {
     {
       badge: 'IN',
       badgeBg: '#0d9488',
-      icon: <ShieldCheck size={20} color="#ffffff" />,
+      icon: <Scale size={18} color="#ffffff" />,
       title: 'India – DPDP Act & Rules',
       subtitle: 'Primary implementation focus for organisations processing digital personal data in India or offering goods and services to individuals in India.',
       bullets: [
         'Notice, consent and lawful processing',
         'Data Principal rights and grievance handling',
         'Processors, security safeguards and breach readiness'
-      ],
-      primeFocus: true
+      ]
     },
     {
       badge: 'EU',
       badgeBg: '#2563eb',
-      icon: <Globe size={20} color="#ffffff" />,
+      icon: <Globe size={18} color="#ffffff" />,
       title: 'EU / EEA – GDPR',
       subtitle: 'Governance support across controller and processor obligations, lawful bases, rights, DPIAs, records, transfers and accountability.',
       bullets: [
@@ -116,7 +100,7 @@ export default function PrivacyDataProtection() {
     {
       badge: 'KSA',
       badgeBg: '#0f766e',
-      icon: <Landmark size={20} color="#ffffff" />,
+      icon: <Landmark size={18} color="#ffffff" />,
       title: 'Saudi Arabia – PDPL',
       subtitle: 'Readiness and operational support aligned to the Saudi Personal Data Protection Law, its Implementing Regulations and transfer requirements.',
       bullets: [
@@ -128,7 +112,7 @@ export default function PrivacyDataProtection() {
     {
       badge: 'UAE',
       badgeBg: '#0284c7',
-      icon: <Building size={20} color="#ffffff" />,
+      icon: <Building2 size={18} color="#ffffff" />,
       title: 'UAE – Federal PDPL',
       subtitle: 'Privacy governance for organisations operating under the UAE federal personal - data protection framework.',
       bullets: [
@@ -140,7 +124,7 @@ export default function PrivacyDataProtection() {
     {
       badge: 'FC',
       badgeBg: '#7c3aed',
-      icon: <Briefcase size={20} color="#ffffff" />,
+      icon: <Briefcase size={18} color="#ffffff" />,
       title: 'DIFC, ADGM & QFC',
       subtitle: 'Support for financial - centre privacy regimes and organisations operating across multiple Middle East jurisdictions.',
       bullets: [
@@ -152,7 +136,7 @@ export default function PrivacyDataProtection() {
     {
       badge: 'HC',
       badgeBg: '#14b8a6',
-      icon: <HeartPulse size={20} color="#ffffff" />,
+      icon: <HeartPulse size={18} color="#ffffff" />,
       title: 'Healthcare & sector privacy',
       subtitle: 'Privacy - readiness support where health information, patient data, employee data or regulated sector information requires enhanced controls.',
       bullets: [
@@ -297,7 +281,7 @@ export default function PrivacyDataProtection() {
           <section className="key-offerings-section">
             <div className="key-offerings-header-row">
               <div className="heading-with-arrow-box">
-                <h2 className="standards-heading left-aligned-heading">
+                <h2 className="standards-heading left-aligned-heading key-text">
                   Key Offerings for <br className="desktop-break" />
                   Data Protection Compliance
                 </h2>
@@ -353,11 +337,9 @@ export default function PrivacyDataProtection() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="key-offering-image-banner">
-                    <img src={item.image} alt={item.title} className="key-offering-card-img" />
-                  </div>
                   <div className="key-offering-body">
                     <h3 className="key-offering-title">{item.title}</h3>
+                    <p className="key-offering-desc">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -375,9 +357,6 @@ export default function PrivacyDataProtection() {
             <div className="dpdp-expertise-box">
               {/* Left Column */}
               <div className="dpdp-box-left">
-                <div className="standards-kicker-line light-kicker">
-                  DPDPA IMPLEMENTATION EXPERTISE
-                </div>
                 <h2 className="dpdp-box-title">
                   Prepare for India's privacy regime with a practical readiness programme.
                 </h2>
@@ -415,9 +394,6 @@ export default function PrivacyDataProtection() {
 
           {/* Regulatory Coverage Section (6 Regional Cards) */}
           <div className="privacy-regulatory-section">
-            <div className="standards-kicker-line">
-              REGULATORY COVERAGE
-            </div>
 
             <div className="tprm-coverage-header-row">
               <h2 className="standards-heading left-aligned-heading">
@@ -432,39 +408,30 @@ export default function PrivacyDataProtection() {
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
               variants={{
-                hidden: {},
+                hidden: { opacity: 0, y: 12 },
                 visible: {
+                  opacity: 1,
+                  y: 0,
                   transition: {
-                    staggerChildren: 0.018
+                    duration: 0.5,
+                    staggerChildren: 0.035
                   }
                 }
               }}
             >
-              {"We help organisations build a common privacy operating model while accounting for the requirements, terminology and regulatory expectations of each jurisdiction.".split(" ").map((word, wIdx, array) => (
-                <span key={wIdx} className="typewriter-word">
-                  {word.split("").map((char, cIdx) => (
-                    <motion.span
-                      key={cIdx}
-                      className="typewriter-char"
-                      variants={{
-                        hidden: { opacity: 0, y: 1 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      transition={{ duration: 0.05 }}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                  {wIdx < array.length - 1 && <span className="typewriter-space">&nbsp;</span>}
-                </span>
+              {"We help organisations build a common privacy operating model while accounting for the requirements, terminology and regulatory expectations of each jurisdiction.".split(" ").map((word, wIdx) => (
+                <motion.span
+                  key={wIdx}
+                  style={{ display: 'inline-block', marginRight: '0.28em' }}
+                  variants={{
+                    hidden: { opacity: 0, y: 8, color: '#0d9488' },
+                    visible: { opacity: 1, y: 0, color: '#334155' }
+                  }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {word}
+                </motion.span>
               ))}
-              <motion.span 
-                className="typewriter-cursor"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                |
-              </motion.span>
             </motion.p>
             </div>
 
@@ -485,27 +452,27 @@ export default function PrivacyDataProtection() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="regional-badge-header-row" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.1rem' }}>
+                  <div className="regional-badge-header-row" style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', marginBottom: '0.75rem' }}>
                     <div className="regional-badge-icon-box" style={{ 
-                      width: '40px', 
-                      height: '40px', 
-                      borderRadius: '12px', 
-                      background: card.badgeBg, 
+                      width: '36px', 
+                      height: '36px', 
+                      borderRadius: '10px', 
+                      background: `linear-gradient(135deg, ${card.badgeBg} 0%, ${card.badgeBg}dd 100%)`, 
                       display: 'flex', 
                       alignItems: 'center', 
                       justifyContent: 'center',
-                      boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)'
+                      boxShadow: `0 4px 14px ${card.badgeBg}40`
                     }}>
                       {card.icon}
                     </div>
                     <span className="regional-badge-label" style={{ 
-                      fontSize: '0.82rem', 
+                      fontSize: '0.76rem', 
                       fontWeight: '800', 
                       color: card.badgeBg, 
                       background: card.badgeBg + '1c', 
-                      padding: '0.35rem 0.7rem', 
-                      borderRadius: '8px',
-                      letterSpacing: '0.05em'
+                      padding: '0.25rem 0.6rem', 
+                      borderRadius: '7px',
+                      letterSpacing: '0.04em'
                     }}>
                       {card.badge}
                     </span>
@@ -517,9 +484,7 @@ export default function PrivacyDataProtection() {
                       <li key={bIdx}>• {b}</li>
                     ))}
                   </ul>
-                  {card.primeFocus && (
-                    <span className="prime-focus-tag">PRIME FOCUS EXPERTISE</span>
-                  )}
+      
                 </motion.div>
               ))}
             </div>
@@ -580,16 +545,15 @@ export default function PrivacyDataProtection() {
                 <motion.div
                   key={index}
                   className="standards-card-item delivery-card-item"
-                  initial={{ opacity: 0, x: -35 }}
+                  initial={{ opacity: 0, x: -25 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.15 }}
                   transition={{ 
-                    duration: 0.55, 
-                    delay: (index % 4) * 0.15, 
+                    duration: 0.45, 
+                    delay: (index % 4) * 0.12, 
                     ease: [0.16, 1, 0.3, 1] 
                   }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 >
                   <div className="delivery-step-badge">{step.num}</div>
                   <h3 className="standards-card-title">{step.title}</h3>
@@ -615,39 +579,30 @@ export default function PrivacyDataProtection() {
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
               variants={{
-                hidden: {},
+                hidden: { opacity: 0, y: 12 },
                 visible: {
+                  opacity: 1,
+                  y: 0,
                   transition: {
-                    staggerChildren: 0.018
+                    duration: 0.5,
+                    staggerChildren: 0.035
                   }
                 }
               }}
             >
-              {"Engage us for a focused assessment, end - to - end implementation, retained vDPO support or targeted improvement programme.".split(" ").map((word, wIdx, array) => (
-                <span key={wIdx} className="typewriter-word">
-                  {word.split("").map((char, cIdx) => (
-                    <motion.span
-                      key={cIdx}
-                      className="typewriter-char"
-                      variants={{
-                        hidden: { opacity: 0, y: 1 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      transition={{ duration: 0.05 }}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                  {wIdx < array.length - 1 && <span className="typewriter-space">&nbsp;</span>}
-                </span>
+              {"Engage us for a focused assessment, end - to - end implementation, retained vDPO support or targeted improvement programme.".split(" ").map((word, wIdx) => (
+                <motion.span
+                  key={wIdx}
+                  style={{ display: 'inline-block', marginRight: '0.28em' }}
+                  variants={{
+                    hidden: { opacity: 0, y: 8, color: '#0d9488' },
+                    visible: { opacity: 1, y: 0, color: '#334155' }
+                  }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {word}
+                </motion.span>
               ))}
-              <motion.span 
-                className="typewriter-cursor"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                |
-              </motion.span>
             </motion.p>
             </div>
 
@@ -675,12 +630,6 @@ export default function PrivacyDataProtection() {
               ))}
             </div>
 
-            {/* Disclaimer Callout Box */}
-            <div className="standards-disclaimer-box" style={{ marginTop: '2.5rem' }}>
-              <p className="disclaimer-text">
-                G3 Cyberspace provides privacy readiness, implementation, governance and advisory support. Jurisdiction - specific legal opinions should be obtained from qualified legal counsel where required.
-              </p>
-            </div>
           </div>
 
             {/* Build Your Privacy Programme CTA Banner Box */}
@@ -694,13 +643,9 @@ export default function PrivacyDataProtection() {
               <div className="privacy-cta-banner-box">
                 {/* Left Text Content */}
                 <div className="privacy-cta-left">
-                  <div className="standards-kicker-line">
-                    BUILD YOUR PRIVACY PROGRAMME
-                  </div>
+            
                   <h2 className="privacy-cta-title">
-                    Start with DPDPA readiness - or <br className="desktop-break" />
-                    align multiple privacy regimes <br className="desktop-break" />
-                    through one operating model.
+                    Start with DPDPA readiness – or align multiple privacy regimes through one operating model.
                   </h2>
                   <p className="privacy-cta-desc">
                     Share your jurisdictions, business model, data processing profile and target timeline. We will recommend the right assessment, implementation or retained - support approach.

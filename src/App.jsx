@@ -10,6 +10,7 @@ import TprmServices from './components/ServicePages/TprmServices'
 import SocOperations from './components/ServicePages/SocOperations'
 import PrivacyDataProtection from './components/ServicePages/PrivacyDataProtection'
 import VcisoVdpoAdvisory from './components/ServicePages/VcisoVdpoAdvisory'
+import Securityservices from './components/ServicePages/Securityservices'
 import { Footer } from './components/Footer'
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/services/soc-operations" element={<SocOperations />} />
         <Route path="/services/privacy-data-protection" element={<PrivacyDataProtection />} />
         <Route path="/services/vciso-vdpo-advisory" element={<VcisoVdpoAdvisory />} />
+        <Route path="/services/security-services" element={<Securityservices />} />
       </Routes>
       <Footer />
     </div>

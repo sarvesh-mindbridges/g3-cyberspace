@@ -166,18 +166,9 @@ export default function CybersecurityCompliance() {
           </h1>
 
           {/* Subtitle / Description */}
-          <p className="service-hero-description">
+          <p className="service-hero-description left-aligned-hero-desc">
             G3 Cyberspace supports management - system and cybersecurity - framework programmes from scope definition and gap assessment through implementation, evidence readiness, internal audit support, remediation and independent audit coordination.
           </p>
-
-          {/* Feature Pills */}
-          <div className="service-pills-wrapper">
-            <span className="service-pill-item">Framework readiness</span>
-            <span className="service-pill-item">Control implementation</span>
-            <span className="service-pill-item">Policies &amp; evidence</span>
-            <span className="service-pill-item">Internal audit support</span>
-            <span className="service-pill-item">Remediation &amp; certification coordination</span>
-          </div>
 
           {/* Action Buttons Centered */}
           <div className="service-buttons-centered">
@@ -284,16 +275,15 @@ export default function CybersecurityCompliance() {
                 <motion.div
                   key={index}
                   className="standards-card-item delivery-card-item"
-                  initial={{ opacity: 0, x: -35 }}
+                  initial={{ opacity: 0, x: -25 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.15 }}
                   transition={{ 
-                    duration: 0.55, 
-                    delay: (index % 4) * 0.15, 
+                    duration: 0.45, 
+                    delay: (index % 4) * 0.12, 
                     ease: [0.16, 1, 0.3, 1] 
                   }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 >
                   <div className="delivery-step-badge">
                     {step.num}

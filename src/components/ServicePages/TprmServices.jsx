@@ -40,10 +40,6 @@ export default function TprmServices() {
 
       <main className="service-hero-centered-screen">
         <div className="service-hero-center-box">
-          {/* Top Category Badge */}
-          <div className="service-badge-line">
-            <span className="badge-dash">—</span> TPRM PROFESSIONAL SERVICES
-          </div>
 
           {/* Main Headline */}
           <h1 className="service-hero-heading">
@@ -54,7 +50,7 @@ export default function TprmServices() {
           </h1>
 
           {/* Subtitle / Description */}
-          <p className="service-hero-description">
+          <p className="service-hero-description left-aligned-hero-desc">
             G3 Cyberspace supports programme design, vendor risk classification, due diligence, evidence review, issue management and ongoing oversight across the third - party lifecycle.
           </p>
 

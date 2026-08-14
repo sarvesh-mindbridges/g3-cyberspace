@@ -92,6 +92,14 @@ export function Navbar({ variant }) {
       title: 'vCISO & vDPO Advisory',
       desc: 'Retained security and privacy leadership, governance and executive support.',
       path: '/services/vciso-vdpo-advisory'
+    },
+    {
+      badge: 'MS',
+      badgeBg: '#ccfbf1',
+      badgeColor: '#0f766e',
+      title: 'Managed Security Services',
+      desc: 'Security-control and platform operations.',
+      path: '/services/security-services'
     }
   ]
 

@@ -128,9 +128,6 @@ export default function VaptSecurityTesting() {
 
           {/* Method Section (Centered below Component 1 - Component 2) */}
           <div className="method-section-centered">
-            <div className="standards-kicker-line">
-              <span className="kicker-dash">—</span> METHOD
-            </div>
 
             <motion.div 
               className="method-card-box"

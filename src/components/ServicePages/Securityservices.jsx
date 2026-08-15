@@ -167,6 +167,12 @@ export default function Securityservices() {
       ]
     }
   ]
+  
+  const managedsocsecurityservices = [
+    { area: 'Primary purpose', soc: 'Detect, investigate and coordinate response to security threats.', security: 'Operate, optimise and govern a broader set of security technologies and controls.'},
+    { area: 'Typical scope', soc: 'Monitoring, triage, investigation, hunting, detection engineering and incident workflows.', security: 'Managed SOC activities plus endpoint, network, cloud, vulnerability, identity and security-platform operations.'},
+    { area: 'Best fit', soc: 'You primarily need stronger monitoring, detection and incident capability.', security: 'You need ongoing operational ownership across several security domains.'},
+  ]
 
   return (
     <div className="service-page-layout light-theme">
@@ -421,6 +427,56 @@ export default function Securityservices() {
               ))}
             </div>
           </motion.section>
+
+           <motion.section 
+            className="soc-deliverables-section"
+            style={{ width: '100%', maxWidth: '1180px', marginTop: '4.5rem', marginBottom: '5rem' }}
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }} 
+           >
+              <div className="mss-fit-header">
+              <h2 className="standards-heading centering-text-soc">
+                 Choose based on the <br className="desktop-break" />
+                <span className="soc-gradient-text"> operational responsibility</span><br className="desktop-break" />
+                you need G3 to take on.
+              </h2>
+             </div>
+               <div className="mss-table-wrapper">
+
+              <table className="mss-raci-table">
+                <thead>
+                  <tr>
+                    <th>Area</th>
+                    <th>Managed Soc</th>
+                    <th>Managed Security Services</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {managedsocsecurityservices.map((row,idx)=>(
+                    <motion.tr 
+                      key={idx}
+                      className="mss-table-row"
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.2 }}
+                      transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ scale: 1.012 }}
+                    >
+                     <td className="mss-col-activity">{row.area}</td>
+                     <td className="mss-col-g3">{row.soc}</td>
+                     <td className="mss-col-client">{row.security}</td>
+
+
+                    </motion.tr>
+                  ))}
+                </tbody>
+              </table>
+
+            </div>
+           </motion.section>
+
         </div>
       </main>
     </div>

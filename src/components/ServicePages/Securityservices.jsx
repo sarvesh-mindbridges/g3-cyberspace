@@ -379,8 +379,7 @@ export default function Securityservices() {
 
           {/* MSS Measurable & Visible Deliverables Section */}
           <motion.section 
-            className="soc-deliverables-section"
-            style={{ width: '100%', maxWidth: '1180px', marginTop: '4.5rem', marginBottom: '5rem' }}
+            className="soc-deliverables-section mss-deliverables-block"
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.15 }}
@@ -428,14 +427,13 @@ export default function Securityservices() {
             </div>
           </motion.section>
 
-           <motion.section 
-            className="soc-deliverables-section"
-            style={{ width: '100%', maxWidth: '1180px', marginTop: '4.5rem', marginBottom: '5rem' }}
+          <motion.section 
+            className="soc-deliverables-section mss-comparison-block"
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }} 
-           >
+          >
               <div className="mss-fit-header">
               <h2 className="standards-heading centering-text-soc">
                  Choose based on the <br className="desktop-break" />

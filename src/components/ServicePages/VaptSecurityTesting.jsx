@@ -1,8 +1,88 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '../Navbar'
 import '../../styles/servicePages.css'
+
+function CustomSelect({ name, value, onChange, options, placeholder = "Select" }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const selectedOption = options.find((opt) => opt.value === value)
+  const displayLabel = selectedOption && selectedOption.value !== '' ? selectedOption.label : placeholder
+
+  const handleSelect = (optionValue) => {
+    onChange({ target: { name, value: optionValue } })
+    setIsOpen(false)
+  }
+
+  return (
+    <div className="custom-select-container" ref={dropdownRef}>
+      <button
+        type="button"
+        className={`custom-select-trigger ${isOpen ? 'active' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className={value ? 'select-value' : 'select-placeholder'}>
+          {displayLabel}
+        </span>
+        <motion.span
+          className="select-arrow"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5 5L9 1" stroke="#0d9488" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.span>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            className="custom-select-menu"
+            initial={{ opacity: 0, y: -6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 4, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.97 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
+            {options.map((opt) => {
+              const isSelected = opt.value === value
+              return (
+                <motion.li
+                  key={opt.value}
+                  className={`custom-select-option ${isSelected ? 'selected' : ''}`}
+                  onClick={() => handleSelect(opt.value)}
+                  whileHover={{ backgroundColor: '#e6fcf8', color: '#0d9488', x: 2 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <span>{opt.label}</span>
+                  {isSelected && (
+                    <span className="check-icon">
+                      <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
+                        <path d="M1 4.5L4.5 8L11 1" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  )}
+                </motion.li>
+              )
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 export default function VaptSecurityTesting() {
   const navigate = useNavigate()
@@ -54,6 +134,175 @@ export default function VaptSecurityTesting() {
     }
   ]
 
+
+const testingOptions = [
+  {
+    id: "web",
+    title: "Web application",
+    description: "Authenticated and unauthenticated flows",
+  },
+  {
+    id: "api",
+    title: "API testing",
+    description: "REST, GraphQL or other interfaces",
+  },
+  {
+    id: "mobile",
+    title: "Mobile application",
+    description: "Android / iOS and supporting APIs",
+  },
+  {
+    id: "external",
+    title: "External network",
+    description: "Public IPs and internet-facing services",
+  },
+  {
+    id: "internal",
+    title: "Internal network",
+    description: "Servers, endpoints and internal IP ranges",
+  },
+  {
+    id: "cloud",
+    title: "Cloud review",
+    description: "Configuration and exposed workloads",
+  },
+  {
+    id: "thick",
+    title: "Thick client",
+    description: "Desktop or installed applications",
+  },
+  {
+    id: "retest",
+    title: "Retesting",
+    description: "Validation after remediation",
+  },
+];
+
+const assessmentModels = [
+  {
+    id: "black",
+    title: "Black box",
+    description: "No credentials or internal knowledge",
+  },
+  {
+    id: "grey",
+    title: "Grey box",
+    description: "Limited credentials or context",
+  },
+  {
+    id: "white",
+    title: "White box",
+    description: "Full knowledge, architecture or source support",
+  },
+];
+
+  const downloadDraft = () => {
+    const content = `
+G3 Cyberspace - VAPT Quote Request
+
+Organisation: ${formData.organisation}
+Business Email: ${formData.email}
+
+Testing Types:
+${formData.testingTypes.join(", ") || "None selected"}
+
+Assessment Model: ${formData.assessmentModel}
+
+Web Applications: ${formData.webApplications}
+APIs: ${formData.apis}
+Mobile Apps: ${formData.mobileApps}
+Public IPs: ${formData.publicIps}
+Internal IPs: ${formData.internalIps}
+
+Target Date: ${formData.targetDate}
+
+Authentication Model: ${formData.authentication}
+Environment: ${formData.environment}
+
+Additional Context:
+${formData.additionalContext}
+`;
+
+    const blob = new Blob([content], {
+      type: "text/plain",
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "vapt-quote-draft.txt";
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
+
+
+
+   const [formData, setFormData] = useState({
+    organisation: "",
+    email: "",
+    testingTypes: [],
+    assessmentModel: "",
+    webApplications: 0,
+    apis: 0,
+    mobileApps: 0,
+    publicIps: 0,
+    internalIps: 0,
+    targetDate: "",
+    authentication: "",
+    environment: "",
+    additionalContext: "",
+    consent: false,
+  });
+
+  const handleTestingChange = (id) => {
+    setFormData((prev) => {
+      const exists = prev.testingTypes.includes(id);
+      return {
+        ...prev,
+        testingTypes: exists
+          ? prev.testingTypes.filter((t) => t !== id)
+          : [...prev.testingTypes, id],
+      };
+    });
+  };
+
+  const authenticationOptions = [
+    { value: '', label: 'Select' },
+    { value: 'authenticated', label: 'Authenticated' },
+    { value: 'unauthenticated', label: 'Unauthenticated' },
+    { value: 'both', label: 'Both' },
+  ]
+
+  const environmentOptions = [
+    { value: '', label: 'Select' },
+    { value: 'production', label: 'Production' },
+    { value: 'staging', label: 'Staging' },
+    { value: 'development', label: 'Development' },
+    { value: 'hybrid', label: 'Hybrid' },
+  ]
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.consent) {
+      alert("Please provide consent before submitting.");
+      return;
+    }
+
+    console.log("VAPT Quote Request:", formData);
+    alert("VAPT proposal request submitted!");
+  };
+
   return (
     <div className="service-page-layout light-theme">
       <Navbar />
@@ -76,7 +325,7 @@ export default function VaptSecurityTesting() {
 
           {/* Action Buttons Centered */}
           <div className="service-buttons-centered">
-            <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+            <button className="btn-compliance-quote">
               <span className="btn-text-roll">
                 <span className="text-original">Discuss with our team</span>
                 <span className="text-duplicate" aria-hidden="true">Discuss with our team</span>
@@ -89,6 +338,255 @@ export default function VaptSecurityTesting() {
               </span>
             </button>
           </div>
+       {/*vapt form area */}
+        <div className="vapt-page">
+      <form className="vapt-card" onSubmit={handleSubmit}>
+        {/* Header */}
+        <div className="form-header">
+          <span className="eyebrow">DEDICATED INTAKE</span>
+
+          <h1>Get a VAPT Quote</h1>
+
+          <p>
+            Provide the essential technical inputs needed to estimate effort,
+            timeline and commercials.
+          </p>
+        </div>
+
+        {/* Organisation + Email */}
+        <div className="form-grid two-columns">
+          <div className="form-group">
+            <label>Organisation</label>
+
+            <input
+              type="text"
+              name="organisation"
+              placeholder="Company / legal entity"
+              value={formData.organisation}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Business email</label>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="name@company.com"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+
+         {/* Testing Type */}
+        <div className="section">
+          <label className="section-label">Type of testing</label>
+
+          <div className="testing-grid">
+            {testingOptions.map((option) => (
+              <label
+                className={`testing-card ${
+                  formData.testingTypes.includes(option.id) ? "selected" : ""
+                }`}
+                key={option.id}
+              >
+                <input
+                  type="checkbox"
+                  checked={formData.testingTypes.includes(option.id)}
+                  onChange={() => handleTestingChange(option.id)}
+                />
+
+                <span className="custom-checkbox"></span>
+
+                <span className="testing-content">
+                  <strong>{option.title}</strong>
+                  <small>{option.description}</small>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+        
+         {/* Assessment Model */}
+        <div className="section">
+          <label className="section-label">Assessment model</label>
+
+          <div className="assessment-grid">
+            {assessmentModels.map((model) => (
+              <label
+                className={`assessment-card ${
+                  formData.assessmentModel === model.id ? "selected" : ""
+                }`}
+                key={model.id}
+              >
+                <input
+                  type="radio"
+                  name="assessmentModel"
+                  value={model.id}
+                  checked={formData.assessmentModel === model.id}
+                  onChange={handleChange}
+                  required
+                />
+
+                <span className="radio-circle"></span>
+
+                <span>
+                  <strong>{model.title}</strong>
+                  <small>{model.description}</small>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+       
+         {/* Numbers */}
+        <div className="form-grid three-columns">
+          <div className="form-group">
+            <label>Web applications</label>
+            <input
+              type="number"
+              min="0"
+              name="webApplications"
+              value={formData.webApplications}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>APIs</label>
+            <input
+              type="number"
+              min="0"
+              name="apis"
+              value={formData.apis}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Mobile apps</label>
+            <input
+              type="number"
+              min="0"
+              name="mobileApps"
+              value={formData.mobileApps}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+          
+           <div className="form-grid three-columns">
+          <div className="form-group">
+            <label>Public IPs</label>
+            <input
+              type="number"
+              min="0"
+              name="publicIps"
+              value={formData.publicIps}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Internal IPs</label>
+            <input
+              type="number"
+              min="0"
+              name="internalIps"
+              value={formData.internalIps}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Target date</label>
+            <input
+              type="date"
+              name="targetDate"
+              value={formData.targetDate}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        
+        {/* Select Fields */}
+        <div className="form-grid two-columns">
+          <div className="form-group">
+            <label>Authentication model</label>
+            <CustomSelect
+              name="authentication"
+              value={formData.authentication}
+              onChange={handleChange}
+              options={authenticationOptions}
+              placeholder="Select"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Environment</label>
+            <CustomSelect
+              name="environment"
+              value={formData.environment}
+              onChange={handleChange}
+              options={environmentOptions}
+              placeholder="Select"
+            />
+          </div>
+        </div>
+          {/* Additional Context */}
+        <div className="form-group textarea-group">
+          <label>Additional context</label>
+
+          <textarea
+            name="additionalContext"
+            value={formData.additionalContext}
+            onChange={handleChange}
+            placeholder="Technology stack, hosting, compliance driver, exclusions or other considerations."
+          ></textarea>
+        </div>
+
+        {/* Consent */}
+        <label className="consent-box">
+          <input
+            type="checkbox"
+            name="consent"
+            checked={formData.consent}
+            onChange={handleChange}
+          />
+
+          <span className="custom-checkbox"></span>
+
+          <span>
+            I consent to <strong>G3 Cyberspace Private Limited</strong>{" "}
+            processing my personal data for this request in accordance with
+            the <a href="#">Privacy Policy</a>.
+          </span>
+        </label>
+
+        {/* Buttons */}
+        <div className="button-row">
+          <button type="submit" className="primary-btn">
+            Request VAPT proposal
+          </button>
+
+          <button
+            type="button"
+            className="secondary-btn"
+            onClick={downloadDraft}
+          >
+            Download draft
+          </button>
+        </div>
+        
+
+      </form>
+
+        </div>
+        
 
           {/* Testing Coverage Section (Centered - Component 1) */}
           <div className="testing-coverage-section">

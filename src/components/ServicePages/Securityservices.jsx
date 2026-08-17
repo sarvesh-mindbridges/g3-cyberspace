@@ -183,7 +183,8 @@ export default function Securityservices() {
           {/* Main Headline */}
           <h1 className="service-hero-heading">
             Operate and optimise your <br className="desktop-break" />
-            security controls with <br className="desktop-break" />
+             <span className="soc-gradient-text">
+            security controls </span> with <br className="desktop-break" />
             <span className="soc-gradient-text">specialist support.</span>
           </h1>
 
@@ -365,7 +366,6 @@ export default function Securityservices() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false, amount: 0.2 }}
                       transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                      whileHover={{ scale: 1.012 }}
                     >
                       <td className="mss-col-activity">{row.activity}</td>
                       <td className="mss-col-g3">{row.g3Service}</td>
@@ -460,7 +460,6 @@ export default function Securityservices() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false, amount: 0.2 }}
                       transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                      whileHover={{ scale: 1.012 }}
                     >
                      <td className="mss-col-activity">{row.area}</td>
                      <td className="mss-col-g3">{row.soc}</td>

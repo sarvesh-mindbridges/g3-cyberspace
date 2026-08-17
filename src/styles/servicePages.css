@@ -370,18 +370,17 @@
 }
 
 .btn-compliance-quote {
-  padding: 14px 34px;
+  padding: 13px 26px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #2d3bd4 0%, #06b6d4 50%, #3b82f6 80%, #2dd4bf 100%);
-  background-size: 200% 200%;
-  animation: buttonGradientFlow 1.5s ease infinite;
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
   color: #ffffff;
-  font-weight: 800;
-  font-size: 0.98rem;
+  font-weight: 700;
+  font-size: 0.94rem;
   border: none;
   cursor: pointer;
   box-shadow: 0 8px 25px rgba(6, 182, 212, 0.35);
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .btn-compliance-quote:hover {
@@ -393,16 +392,17 @@
 }
 
 .btn-discuss-req {
-  padding: 14px 34px;
+  padding: 13px 26px;
   border-radius: 999px;
   background: white;
   color: #0f766e;
   border: 1.5px solid #0f766e;
   font-weight: 700;
-  font-size: 0.98rem;
+  font-size: 0.94rem;
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 2px 10px rgba(15, 118, 110, 0.1);
+  white-space: nowrap;
 }
 
 .btn-discuss-req:hover {
@@ -1658,8 +1658,8 @@ a:focus-visible .btn-text-roll .text-duplicate {
 
 .soc-hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 2.5rem;
   align-items: center;
   width: 100%;
 }
@@ -1674,8 +1674,9 @@ a:focus-visible .btn-text-roll .text-duplicate {
 .service-buttons-left {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 1.1rem;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .soc-hero-right {
@@ -3358,8 +3359,7 @@ a:focus-visible .btn-text-roll .text-duplicate {
   border: 1px solid #e2e8f0;
   border-radius: 24px;
   padding: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   box-shadow: 0 14px 40px -10px rgba(13, 148, 136, 0.1), 0 4px 15px rgba(15, 23, 42, 0.03);
   box-sizing: border-box;
 }
@@ -3419,8 +3419,7 @@ a:focus-visible .btn-text-roll .text-duplicate {
 
 .mss-table-row {
   border-bottom: 1px solid #e2e8f0;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, background, box-shadow;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 
@@ -3529,6 +3528,21 @@ a:focus-visible .btn-text-roll .text-duplicate {
 
 /* Small Tablets / Large Phones (max-width: 900px) */
 @media (max-width: 900px) {
+  .soc-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .service-buttons-left {
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .mss-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .mss-raci-table {
     min-width: 650px;
   }

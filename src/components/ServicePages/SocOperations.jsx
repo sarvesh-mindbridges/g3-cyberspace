@@ -228,7 +228,7 @@ export default function SocOperations() {
                   <span className="text-duplicate" aria-hidden="true">Discuss SOC operations</span>
                 </span>
               </button>
-              <button className="btn-discuss-req" onClick={() => navigate('/')}>
+              <button className="btn-discuss-req " onClick={() => navigate('/')}>
                 <span className="btn-text-roll">
                   <span className="text-original">Explore use-case library</span>
                   <span className="text-duplicate" aria-hidden="true">Explore use-case library</span>

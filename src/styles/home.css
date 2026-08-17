@@ -1477,6 +1477,70 @@
   }
 }
 
+/* Mobile view fixes for hero carousel text visibility */
+@media (max-width: 768px) {
+  .hero-sticky-frame {
+    padding: 1rem;
+  }
+
+  .hero-glass-card {
+    background: rgba(4, 10, 24, 0.72) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    padding: 1.25rem 1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  }
+
+  .hero-title {
+    font-size: 1.3rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Force solid white color for title-accelerate & title-growth on mobile view */
+  .hero-title .title-accelerate,
+  .hero-title .title-growth,
+  .hero-glass-card.theme-green .title-accelerate,
+  .hero-glass-card.theme-green .title-growth,
+  .hero-glass-card.theme-green-black .title-accelerate,
+  .hero-glass-card.theme-green-black .title-growth {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  /* Force solid bright cyan/sky blue color on mobile for default theme */
+  .hero-title .highlight-cyber,
+  .hero-title .highlight-gradient,
+  .hero-title .highlight-compliance {
+    color: #38bdf8 !important;
+    -webkit-text-fill-color: #38bdf8 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+    filter: none !important;
+  }
+
+  /* Force solid bright emerald green color on mobile for green themes */
+  .hero-glass-card.theme-green .highlight-cyber,
+  .hero-glass-card.theme-green .highlight-gradient,
+  .hero-glass-card.theme-green .highlight-compliance,
+  .hero-glass-card.theme-green-black .highlight-cyber,
+  .hero-glass-card.theme-green-black .highlight-gradient,
+  .hero-glass-card.theme-green-black .highlight-compliance {
+    color: #34d399 !important;
+    -webkit-text-fill-color: #34d399 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+    filter: none !important;
+  }
+}
+
 @media (max-width: 650px) {
   .pillar-grid {
     grid-template-columns: repeat(2, 1fr);

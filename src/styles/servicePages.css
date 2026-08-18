@@ -1658,8 +1658,8 @@ a:focus-visible .btn-text-roll .text-duplicate {
 
 .soc-hero-grid {
   display: grid;
-  grid-template-columns: 1.18fr 0.82fr;
-  gap: 2.5rem;
+  grid-template-columns: 1.28fr 0.72fr;
+  gap: 2.25rem;
   align-items: center;
   width: 100%;
 }
@@ -1669,6 +1669,10 @@ a:focus-visible .btn-text-roll .text-duplicate {
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+}
+
+.soc-hero-left .service-hero-heading {
+  font-size: clamp(1.75rem, 2.7vw, 2.45rem);
 }
 
 .service-buttons-left {

@@ -207,7 +207,7 @@ export default function SocOperations() {
           <div className="soc-hero-left">
 
             <h1 className="service-hero-heading left-aligned-heading">
-              Strengthen <span className="soc-gradient-text">security monitoring</span>, triage <br className="desktop-break" />
+              Strengthen <span className="soc-gradient-text">security monitoring, triage</span> <br className="desktop-break" />
               and <span className="soc-gradient-text">incident response</span> discipline.
             </h1>
 

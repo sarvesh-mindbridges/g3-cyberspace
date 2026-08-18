@@ -286,18 +286,30 @@ export function Navbar({ variant }) {
                             </div>
                             <div className="proposal-actions">
                               <a 
-                                href="#quote" 
+                                href="/getaquote" 
                                 className="btn-quote full-width"
                                 onMouseMove={handleMagneticMove}
                                 onMouseLeave={handleMagneticLeave}
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  setOpenDropdown(null)
+                                  setHoverDropdown(null)
+                                  navigate('/getaquote')
+                                }}
                               >
                                 Get a Quote
                               </a>
                               <a 
-                                href="#vapt-intake" 
+                                href="/services/vapt-security-testing" 
                                 className="btn-vapt-intake"
                                 onMouseMove={handleMagneticMove}
                                 onMouseLeave={handleMagneticLeave}
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  setOpenDropdown(null)
+                                  setHoverDropdown(null)
+                                  navigate('/services/vapt-security-testing/intake')
+                                }}
                               >
                                 VAPT intake
                               </a>
@@ -393,10 +405,14 @@ export function Navbar({ variant }) {
                   </span>
                 </a>
                 <a 
-                  href="#quote" 
+                  href="/getaquote" 
                   className="btn-quote"
                   onMouseMove={handleMagneticMove}
                   onMouseLeave={handleMagneticLeave}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    navigate('/getaquote')
+                  }}
                 >
                   <span className="btn-text-roll">
                     <span className="text-original">Get a Quote</span>
@@ -484,7 +500,15 @@ export function Navbar({ variant }) {
                   <a href="#talk" className="btn-talk full-width" onClick={() => setMobileMenuOpen(false)}>
                     Talk to us
                   </a>
-                  <a href="#quote" className="btn-quote full-width" onClick={() => setMobileMenuOpen(false)}>
+                  <a 
+                    href="/getaquote" 
+                    className="btn-quote full-width" 
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setMobileMenuOpen(false)
+                      navigate('/getaquote')
+                    }}
+                  >
                     Get a Quote
                   </a>
                 </>

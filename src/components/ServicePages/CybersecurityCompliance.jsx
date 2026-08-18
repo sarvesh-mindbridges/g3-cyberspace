@@ -156,7 +156,6 @@ export default function CybersecurityCompliance() {
   return (
     <div className="service-page-layout light-theme">
       <Navbar />
-
       <main className="service-hero-centered-screen">
         <div className="service-hero-center-box">
 
@@ -239,7 +238,9 @@ export default function CybersecurityCompliance() {
               ))}
             </div>
 
-            {/* Certification Disclaimer Callout Bar with Scroll Animation */}
+
+ 
+            {/* Certification Disclaimer Callout Bar with Scroll Animation */}'
             <motion.div
               className="standards-disclaimer-box"
               initial={{ opacity: 0, y: 20 }}

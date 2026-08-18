@@ -325,7 +325,7 @@ ${formData.additionalContext}
 
           {/* Action Buttons Centered */}
           <div className="service-buttons-centered">
-            <button className="btn-compliance-quote">
+            <button className="btn-compliance-quote" onClick={() => navigate('/getaquote')}>
               <span className="btn-text-roll">
                 <span className="text-original">Discuss with our team</span>
                 <span className="text-duplicate" aria-hidden="true">Discuss with our team</span>

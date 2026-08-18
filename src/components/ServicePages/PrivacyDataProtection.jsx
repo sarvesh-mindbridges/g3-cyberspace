@@ -257,22 +257,10 @@ export default function PrivacyDataProtection() {
 
         {/* Action Buttons Centered Across Screen */}
         <div className="service-buttons-centered" style={{ marginTop: '2.5rem', marginBottom: '1rem' }}>
-          <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+          <button className="btn-compliance-quote" onClick={() => navigate('/getaquote')}>
             <span className="btn-text-roll">
               <span className="text-original">Get a Privacy Quote</span>
               <span className="text-duplicate" aria-hidden="true">Get a Privacy Quote</span>
-            </span>
-          </button>
-          <button className="btn-discuss-req" onClick={() => navigate('/calendar')}>
-            <span className="btn-text-roll">
-              <span className="text-original">Discuss your privacy programme</span>
-              <span className="text-duplicate" aria-hidden="true">Discuss your privacy programme</span>
-            </span>
-          </button>
-          <button className="btn-discuss-req" onClick={() => navigate('/')}>
-            <span className="btn-text-roll">
-              <span className="text-original">Explore privacy automation</span>
-              <span className="text-duplicate" aria-hidden="true">Explore privacy automation</span>
             </span>
           </button>
         </div>
@@ -654,7 +642,7 @@ export default function PrivacyDataProtection() {
 
                 {/* Right Stacked Buttons */}
                 <div className="privacy-cta-buttons-stacked">
-                  <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+                  <button className="btn-compliance-quote" onClick={() => navigate('/getaquote')}>
                     <span className="btn-text-roll">
                       <span className="text-original">Get a Privacy Quote</span>
                       <span className="text-duplicate" aria-hidden="true">Get a Privacy Quote</span>

@@ -82,32 +82,32 @@ export default function SocOperations() {
 
   const socCapabilitiesData = [
     {
-      tag: 'MONITOR',
+      tag: '01 · MONITOR',
       title: 'Security Monitoring & Alert Triage',
       desc: 'Monitor agreed security sources, validate alerts, remove obvious false positives and prioritise events for investigation.'
     },
     {
-      tag: 'INVESTIGATE',
+      tag: '02 · INVESTIGATE',
       title: 'Threat Investigation & Enrichment',
       desc: 'Correlate available endpoint, identity, network, cloud and application context to determine scope, severity and likely impact.'
     },
     {
-      tag: 'RESPOND',
+      tag: '03 · RESPOND',
       title: 'Incident Escalation & Response Coordination',
       desc: 'Escalate confirmed incidents, notify agreed stakeholders and coordinate containment or remediation actions within the defined response model.'
     },
     {
-      tag: 'HUNT',
+      tag: '04 · HUNT',
       title: 'Threat Hunting',
       desc: 'Perform targeted searches using indicators, threat intelligence and hypotheses to identify suspicious activity not detected by standard alerts.'
     },
     {
-      tag: 'ENGINEER',
+      tag: '05 · ENGINEER',
       title: 'Detection Engineering & Tuning',
       desc: 'Review and improve SIEM use cases, correlation logic, thresholds and playbooks to increase detection quality and reduce noise.'
     },
     {
-      tag: 'GOVERN',
+      tag: '06 · GOVERN',
       title: 'Reporting & Service Governance',
       desc: 'Provide operational reporting, incident trends, open actions and service-review inputs to support continuous improvement.'
     }
@@ -216,22 +216,10 @@ export default function SocOperations() {
             </p>
 
             <div className="service-buttons-left">
-              <button className="btn-compliance-quote">
+              <button className="btn-compliance-quote" onClick={() => navigate('/getaquote')}>
                 <span className="btn-text-roll">
                   <span className="text-original">Get a SOC Quote</span>
                   <span className="text-duplicate" aria-hidden="true">Get a SOC Quote</span>
-                </span>
-              </button>
-              <button className="btn-discuss-req" onClick={() => navigate('/calendar')}>
-                <span className="btn-text-roll">
-                  <span className="text-original">Discuss SOC operations</span>
-                  <span className="text-duplicate" aria-hidden="true">Discuss SOC operations</span>
-                </span>
-              </button>
-              <button className="btn-discuss-req " onClick={() => navigate('/')}>
-                <span className="btn-text-roll">
-                  <span className="text-original">Explore use-case library</span>
-                  <span className="text-duplicate" aria-hidden="true">Explore use-case library</span>
                 </span>
               </button>
             </div>

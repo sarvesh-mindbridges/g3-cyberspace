@@ -171,7 +171,7 @@ export default function CybersecurityCompliance() {
 
           {/* Action Buttons Centered */}
           <div className="service-buttons-centered">
-            <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+            <button className="btn-compliance-quote" onClick={() => navigate('/getaquote')}>
               <span className="btn-text-roll">
                 <span className="text-original">Get a Compliance Quote</span>
                 <span className="text-duplicate" aria-hidden="true">Get a Compliance Quote</span>

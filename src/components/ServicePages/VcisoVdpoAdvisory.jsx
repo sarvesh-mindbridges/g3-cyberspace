@@ -51,10 +51,7 @@ export default function VcisoVdpoAdvisory() {
         <div className="vciso-hero-grid">
           {/* Left Column */}
           <div className="vciso-hero-left">
-            <div className="service-badge-line">
-              <span className="badge-dash">—</span> VCISO · VDPO · EXECUTIVE ADVISORY
-            </div>
-
+         
             <h1 className="service-hero-heading left-aligned-heading">
               Access <br className="desktop-break" />
               experienced <br className="desktop-break" />
@@ -69,7 +66,7 @@ export default function VcisoVdpoAdvisory() {
             </p>
 
             <div className="service-buttons-left">
-              <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+              <button className="btn-compliance-quote" onClick={() => navigate('/getaquote')}>
                 <span className="btn-text-roll">
                   <span className="text-original">Get an Advisory Quote</span>
                   <span className="text-duplicate" aria-hidden="true">Get an Advisory Quote</span>

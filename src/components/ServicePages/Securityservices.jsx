@@ -195,7 +195,7 @@ export default function Securityservices() {
 
           {/* Action Buttons Centered */}
           <div className="service-buttons-centered">
-            <button className="btn-compliance-quote" onClick={() => navigate('/calendar')}>
+            <button className="btn-compliance-quote" onClick={() => navigate('/getaquote')}>
               <span className="btn-text-roll">
                 <span className="text-original">Discuss Managed Security</span>
                 <span className="text-duplicate" aria-hidden="true">Discuss Managed Security</span>

@@ -116,7 +116,7 @@ const VaptIntake = () => {
     organisation: "",
     email: "",
     testingTypes: [],
-    assessmentModel: "grey_box",
+    assessmentModel: "",
     webApplications: 0,
     apis: 0,
     mobileApps: 0,

@@ -1,0 +1,1038 @@
+/* SOLTRISK Product Page Styling — TRACS 360 & G3SEC.ai Theme Palette */
+
+.soltrisk-page-wrapper {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f8fafc 70%),
+    linear-gradient(rgba(30, 82, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 82, 136, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Common Typography & Accents matching TRACS 360 */
+.soltrisk-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: #f0f7ff;
+  border: 1px solid rgba(30, 82, 136, 0.25);
+  border-radius: 9999px;
+  color: #1e5288;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(30, 82, 136, 0.06);
+}
+
+.soltrisk-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #1e5288;
+  box-shadow: 0 0 6px rgba(30, 82, 136, 0.4);
+}
+
+.soltrisk-gold-text {
+  color: #1e5288;
+  background: linear-gradient(135deg, #092c4c 0%, #1e5288 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.soltrisk-outline-text {
+  color: #0b1528;
+  letter-spacing: 0.02em;
+}
+
+/* --- Hero Section --- */
+.soltrisk-hero-section {
+  padding: 4.5rem 1.75rem 5.5rem;
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.soltrisk-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .soltrisk-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.soltrisk-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.soltrisk-hero-title {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.8rem, 4.8vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #0b1528;
+  margin: 1.25rem 0 1.5rem;
+  text-transform: uppercase;
+}
+
+.soltrisk-hero-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #475569;
+  max-width: 540px;
+  margin-bottom: 2.25rem;
+  font-weight: 450;
+}
+
+.soltrisk-hero-subtitle strong {
+  color: #0f172a;
+}
+
+.soltrisk-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-soltrisk-primary {
+  padding: 0.85rem 1.9rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #092c4c 0%, #1e5288 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.92rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(9, 44, 76, 0.28);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light White Flash Beam Flowing Left to Right */
+.btn-soltrisk-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  animation: whiteFlashSweep 0.8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-soltrisk-primary > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Slower White Flash Sweep exclusively for View Brochure button */
+.btn-soltrisk-slow-flash::before {
+  animation: whiteFlashSweep 3.5s ease-in-out infinite;
+}
+
+@keyframes whiteFlashSweep {
+  0% {
+    left: -120%;
+  }
+  70% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.btn-soltrisk-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(9, 44, 76, 0.38);
+  background: linear-gradient(135deg, #07233d 0%, #174472 100%);
+}
+
+.btn-soltrisk-outline {
+  padding: 0.85rem 1.6rem;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #1e5288;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: 1.5px solid #cbd5e1;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-soltrisk-outline:hover {
+  background: #f8fafc;
+  border-color: #1e5288;
+  color: #092c4c;
+  transform: translateY(-2px);
+}
+
+/* --- Hero Interactive Dashboard Window --- */
+.soltrisk-dashboard-window {
+   background: linear-gradient(135deg, #0d9488 0%, #06b6d4 40%, #3b82f6 80%, #2dd4bf 100%);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(13, 148, 136, 0.22), 0 0 35px rgba(6, 182, 212, 0.28);
+  overflow: hidden;
+}
+
+.soltrisk-window-header {
+  background: #f1f5f9;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.soltrisk-window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.window-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.window-dot.red { background: #ef4444; }
+.window-dot.yellow { background: #f59e0b; }
+.window-dot.green { background: #10b981; }
+
+.soltrisk-window-title {
+  font-family: 'JetBrains Mono', monospace, sans-serif;
+  font-size: 0.78rem;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
+.soltrisk-window-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: #f8fafc;
+}
+
+.dash-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.dash-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.dash-stat-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dash-stat-val {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 4px 0 2px;
+}
+
+.dash-stat-val.gold { color: #1e5288; }
+.dash-stat-val.red { color: #ef4444; }
+.dash-stat-val.cyan { color: #0284c7; }
+
+.dash-stat-sub {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+/* Findings List */
+.dash-section-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #475569;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.dash-findings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dash-finding-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.82rem;
+}
+
+.dash-finding-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1e293b;
+  font-family: 'JetBrains Mono', monospace, sans-serif;
+  font-weight: 500;
+}
+
+.finding-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.finding-badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.finding-badge.new { background: rgba(239, 68, 68, 0.12); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.25); }
+.finding-badge.open { background: rgba(245, 158, 11, 0.12); color: #d97706; border: 1px solid rgba(245, 158, 11, 0.25); }
+.finding-badge.fixed { background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.25); }
+
+/* Severity Progress Bars */
+.dash-severity-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.severity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.74rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.severity-label {
+  width: 55px;
+  text-align: left;
+}
+
+.severity-track {
+  flex: 1;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.severity-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s ease;
+}
+
+.severity-fill.critical { background: #ef4444; }
+.severity-fill.high { background: #f97316; }
+.severity-fill.medium { background: #f59e0b; }
+.severity-fill.low { background: #0284c7; }
+
+.severity-count {
+  width: 20px;
+  text-align: right;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* --- Stats Ribbon Bar (Screenshot 2) --- */
+.soltrisk-stats-bar {
+  background: #ffffff;
+  border-y: 1px solid #e2e8f0;
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(30, 82, 136, 0.04);
+}
+
+.soltrisk-stats-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .soltrisk-stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.soltrisk-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.soltrisk-stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #1e5288;
+  line-height: 1.1;
+}
+
+.soltrisk-stat-title {
+  font-size: 0.86rem;
+  color: #64748b;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* --- Section Layout Headers --- */
+.soltrisk-section-header {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 3.5rem;
+}
+
+.soltrisk-section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.12;
+  color: #0b1528;
+  margin: 0.85rem 0 1rem;
+}
+
+.soltrisk-section-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+/* --- Capabilities Grid (9 Cards in TRACS 360 Style) --- */
+.soltrisk-capabilities-section {
+  padding: 5.5rem 1.75rem;
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.soltrisk-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  perspective: 1200px;
+}
+
+@media (max-width: 1024px) {
+  .soltrisk-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .soltrisk-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.soltrisk-capability-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2.1rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.03);
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.soltrisk-capability-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(30, 82, 136, 0.08),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animated Smooth Left-to-Right Top Border Line on Hover */
+.soltrisk-capability-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #092c4c 0%, #1e5288 50%, #0d9488 100%);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.soltrisk-capability-card:hover::before {
+  opacity: 1;
+}
+
+.soltrisk-capability-card:hover::after {
+  transform: scaleX(1);
+}
+
+.soltrisk-capability-card:hover {
+  background: #ffffff;
+  border-color: #1e5288;
+  box-shadow: 0 20px 45px rgba(30, 82, 136, 0.18);
+}
+
+.card-num-watermark {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: rgba(30, 82, 136, 0.08);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.card-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #f0f7ff;
+  color: #1e5288;
+  border: 1px solid rgba(30, 82, 136, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 12px rgba(30, 82, 136, 0.06);
+}
+
+.capability-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0b1528;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.capability-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 1.35rem;
+}
+
+.capability-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cap-tag {
+  font-family: 'JetBrains Mono', monospace, sans-serif;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #1e5288;
+  font-weight: 600;
+}
+
+/* --- How Soltrisk Works Section (Dark TRACS Theme Section) --- */
+.soltrisk-process-section {
+  padding: 5.5rem 1.75rem;
+  background: linear-gradient(135deg, #092c4c 0%, #0d4170 50%, #082440 100%);
+  color: #ffffff;
+  border-y: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.soltrisk-process-container-inner {
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.soltrisk-process-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .soltrisk-process-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.process-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.process-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  text-align: left;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.process-step-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.step-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #fbbf24;
+  line-height: 1;
+  min-width: 38px;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.step-desc {
+  font-size: 0.9rem;
+  line-height: 1.58;
+  color: #cbd5e1;
+}
+
+/* Process Diagram Card inside Dark Section */
+.process-diagram-card {
+  background: linear-gradient(135deg, #0d9488 0%, #06b6d4 40%, #3b82f6 80%, #2dd4bf 100%);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(13, 148, 136, 0.22), 0 0 35px rgba(6, 182, 212, 0.28);
+  padding: 3px;
+  overflow: hidden;
+}
+
+.process-diagram-inner {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 21px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.diagram-phase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  text-align: left;
+}
+
+.phase-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #1e5288;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.phase-flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.phase-node {
+  padding: 9px 14px;
+  background: #f0f7ff;
+  border: 1px solid rgba(30, 82, 136, 0.25);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #0f172a;
+  text-align: center;
+  flex: 1;
+  min-width: 65px;
+}
+
+.phase-arrow {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.diagram-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.25rem;
+}
+
+.metric-mini-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.metric-mini-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.metric-mini-lbl {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #1e5288;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* --- Risk Intelligence & Cyber Score Section --- */
+.soltrisk-risk-section {
+  padding: 5.5rem 1.75rem;
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.radial-score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem 0 3.5rem;
+}
+
+.radial-ring {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background: conic-gradient(#1e5288 0% 74%, #e2e8f0 74% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(30, 82, 136, 0.15);
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.radial-inner {
+  width: 142px;
+  height: 142px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.score-big-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #0b1528;
+  line-height: 1;
+}
+
+.score-lbl {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.08em;
+}
+
+.grade-badge-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1e5288;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.grade-subtext {
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.score-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  max-width: 720px;
+  margin: 2rem auto 0;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .score-breakdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.breakdown-box {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 14px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+/* Clockwise Rotating Animated Border */
+.breakdown-box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent 0deg,
+    transparent 270deg,
+    #0d9488 310deg,
+    #1e5288 340deg,
+    #3b82f6 360deg
+  );
+  animation: clockwiseBorderSpin 3.5s linear infinite;
+  z-index: 1;
+}
+
+.breakdown-box::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #ffffff;
+  border-radius: 14px;
+  z-index: 2;
+}
+
+.breakdown-box > * {
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes clockwiseBorderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.breakdown-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+}
+
+.breakdown-num.critical { color: #ef4444; }
+.breakdown-num.high { color: #f97316; }
+.breakdown-num.medium { color: #d97706; }
+.breakdown-num.low { color: #0284c7; }
+
+.breakdown-lbl {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* --- Integrations Marquee Bar (Infinite Right to Left Flow) --- */
+.integrations-bar {
+  border-top: 1px solid #e2e8f0;
+  padding: 4.5rem 0;
+  text-align: center;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+.integrations-lbl {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.integrations-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  padding: 10px 0;
+}
+
+.integrations-flex {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  animation: scrollIntegrationsRightToLeft 25s linear infinite;
+}
+
+.integrations-track-wrapper:hover .integrations-flex {
+  animation-play-state: paused;
+}
+
+@keyframes scrollIntegrationsRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.integration-pill {
+  padding: 12px 22px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.integration-pill:hover {
+  border-color: #1e5288;
+  color: #1e5288;
+  background: #f0f7ff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(30, 82, 136, 0.14);
+}
+
+/* --- Bottom CTA Card --- */
+.soltrisk-cta-section {
+  padding: 4.5rem 1.75rem 6.5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.soltrisk-cta-card {
+  background: linear-gradient(135deg, #092c4c 0%, #1e5288 100%);
+  border-radius: 28px;
+  padding: 4.5rem 2.5rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 20px 50px rgba(9, 44, 76, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.cta-desc {
+  font-size: 1.05rem;
+  color: #e2e8f0;
+  max-width: 650px;
+  margin: 0 auto 2.25rem;
+}
